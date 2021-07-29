@@ -1,10 +1,24 @@
-.choice1{
-    border:solid;
+.choice2 {
+    font-size: 20px;
+    border: solid;
     list-style: none;
     border-color: lightgray;
+    text-align: center;
 }
 
-.title{
-text-decoration: underline;
-text-decoration-color: yellow;
+.title {
+    font-size: 20px;
+    width: 300px;
+    margin:10px 0px 10px 300px;
+
+
 }
+
+.title:after{
+content: "";
+border-bottom: rgb(16, 165, 16) solid 2px;
+margin-right: 150px;
+display: block;
+}
+
+
