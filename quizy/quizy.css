@@ -1,0 +1,73 @@
+body {
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Choice1 {
+    font-size: 20px;
+    border: solid lightgray;
+    list-style: none;
+    padding: 10px 30px;
+    width: 700px;
+    box-shadow: 1px 3px 1px rgb(241, 241, 241);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.Img1 {
+    display: block;
+    margin-left: 370px;
+    margin: 0 auto;
+}
+
+ul{
+    padding: 0;
+}
+
+.Title {
+    font-size: 16px;
+    display: inline-block;
+}
+
+.Title:after {
+    content: "";
+    border-bottom: rgb(16, 165, 16) solid 2px;
+    display: block;
+}
+
+.correct{
+    background-color: rgba(21, 141, 221, 0.993);
+    color: white;
+    
+}
+
+
+.disCorrect{
+    background-color: rgb(255, 60, 0);
+    color: white;
+}
+
+.correctBox{
+   background-color: rgb(216, 215, 215);
+    padding: 30px 100px;
+}
+.discorrectBox{
+    background-color: rgb(216, 215, 215);
+    padding: 30px 100px;
+
+}
+.resultAnnouncementCorrect{
+    font-size: medium;
+    border-bottom: 3px solid #287dff;
+    display: inline-block;
+}
+.resultAnnouncementDisCorrect{
+    font-size: medium;
+    border-bottom: 3px solid rgb(255, 60, 0);
+    display: inline-block;
+}
+.cannotClick{
+    pointer-events: none;
+}
