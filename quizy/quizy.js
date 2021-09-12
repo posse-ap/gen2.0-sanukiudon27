@@ -61,6 +61,35 @@ function change13() {
 choice11.disabled = true;
 
 
+{/* <body>
+    <h1 id="title" class="Title">１．この地名はなんて読む？</h1>
+
+    <img
+      id="img1"
+      class="Img1"
+      src="https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png"
+      alt="高輪"
+    />
+    <ul>
+      <li id="choice1-1" class="Choice1">たかなわ</li>
+      <li id="choice1-2" class="Choice1">たかわ</li>
+      <li id="choice1-3" class="Choice1">こうわ</li>
+      <div id="answerBox">
+        <h1 id="result" ></h1>
+          <p id="theAnswer"></p>
+      </div>
+    </ul>
+  </body> */}
+
+
+
+
+
+
+
+  
+
+
 
 
 
