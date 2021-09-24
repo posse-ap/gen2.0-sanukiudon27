@@ -1,10 +1,10 @@
 body {
     width: 700px;
-    margin-right: auto;
-    margin-left: auto;
+margin: 0 auto;
+    
 }
 
-.Choice1 {
+.choice {
     font-size: 20px;
     border: solid lightgray;
     list-style: none;
@@ -16,12 +16,15 @@ body {
     cursor: pointer;
 }
 
-.Img1 {
+.img {
     display: block;
     margin-left: 370px;
     margin: 0 auto;
 }
-
+h3{
+    margin-top: 15px;
+    margin-bottom: 0;
+}
 ul{
     padding: 0;
 }
@@ -40,34 +43,35 @@ ul{
 .correct{
     background-color: rgba(21, 141, 221, 0.993);
     color: white;
-    
 }
 
 
-.disCorrect{
+.dis_correct{
     background-color: rgb(255, 60, 0);
     color: white;
 }
 
-.correctBox{
+/* .correct_box{
    background-color: rgb(216, 215, 215);
     padding: 30px 100px;
 }
-.discorrectBox{
+.dis_correct_box{
     background-color: rgb(216, 215, 215);
     padding: 30px 100px;
-
-}
-.resultAnnouncementCorrect{
+} */
+.result_announcement_correct{
     font-size: medium;
     border-bottom: 3px solid #287dff;
     display: inline-block;
 }
-.resultAnnouncementDisCorrect{
+.result_announcement_dis_correct{
     font-size: medium;
     border-bottom: 3px solid rgb(255, 60, 0);
     display: inline-block;
 }
-.cannotClick{
+.answer_container_class{
+background-color: rgb(228, 225, 222);
+}
+.cannot_click{
     pointer-events: none;
 }
