@@ -42,15 +42,17 @@ function shuffle(getyu) {
 // console.log(get)
 // function all() {
 for (let i = 0; i < selection_arr.length; i++) {
+shuffle(selection_arr[i]);
+// console.log(selection_arr[i]);
    let new_method =
       `<h2 id="what_place_name" class="Title">${i + 1}．この地名はなんて読む？</h2>` +
       '<div id="place_image_container"></div>' +
       `<img id="place_image" class="img" src="${img_arr[i]}" alt="高輪" />` +
       '</div>' +
       '<ul id="selection_container">' +
-      `<li class="choice" >${selection_arr[i][0]}</li>` +
-      `<li class="choice" >${selection_arr[i][1]}</li>` +
-      `<li class="choice" >${selection_arr[i][2]}</li>` +
+      `<li class="choice" id="top_selection${i}">${selection_arr[i][0]}</li>` +
+      `<li class="choice" id="middle_selection${i}">${selection_arr[i][1]}</li>` +
+      `<li class="choice" id="bottom_selection${i}">${selection_arr[i][2]}</li>` +
       '</ul>' +
       `<div id="answer_container${i}">` +
       `<h3 id="result${i}"></h3>` +
@@ -58,6 +60,9 @@ for (let i = 0; i < selection_arr.length; i++) {
       '</div>';
    document.getElementById('quiz_container').insertAdjacentHTML('beforeend', new_method);
 
+
+
+   
    // const li = document.querySelectorAll('#selection_container > li');
    // switch (shuffle_choice) {
    //    case `${selection_arr[i][0]}`:
@@ -93,27 +98,27 @@ for (let i = 0; i < selection_arr.length; i++) {
    // }
    // id="bottom_selection${i}" 
 
-   let choose = document.querySelectorAll('#selection_container li');
-
+   // let choose = document.querySelectorAll('#selection_container li');
+   // choose.forEach( elm =>{ elm.style.order=shuffle([...selection_arr])});
 
 
    // selection.idってなに？
-   selection_arr[i].forEach (function (selection, index) {
-         // function selection(selection_id) {
-         if (index === 0) {
-            // let top_selection = document.getElementById(`top_selection${i}`);
-            choose.id = `top_selection${i}`;
-         }
-         else if (index === 1) {
-            // let middle_selection = document.getElementById(`middle_selection${i}`
-            choose.id = `middle_selection${i}`
-         }
-         else {
-            // bottom_selection = document.getElementById(`bottom_selection${i}`
-            choose.id = `bottom_selection${i}`
-         }
+   // selection_arr[i].forEach (function (selection, index) {
+   //       // function selection(selection_id) {
+   //       if (index === 0) {
+   //          // let top_selection = document.getElementById(`top_selection${i}`);
+   //          choose.id = `top_selection${i}`;
+   //       }
+   //       else if (index === 1) {
+   //          // let middle_selection = document.getElementById(`middle_selection${i}`
+   //          choose.id = `middle_selection${i}`
+   //       }
+   //       else {
+   //          // bottom_selection = document.getElementById(`bottom_selection${i}`
+   //          choose.id = `bottom_selection${i}`
+   //       }
    
-   });
+   // });
    // selection();
    // 文字のidを取得する
    let top_selection = document.getElementById(`top_selection${i}`);
@@ -159,7 +164,7 @@ for (let i = 0; i < selection_arr.length; i++) {
       middle_selection.classList.add('cannot_click');
       answer_container.classList.add('answer_container_class');
    };
-   shuffle(selection_arr[i]);
+   // shuffle(selection_arr[i]);
 
 };
 // };
