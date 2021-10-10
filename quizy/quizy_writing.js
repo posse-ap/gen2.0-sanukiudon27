@@ -74,6 +74,18 @@ for (let i = 0; i < selection_arr.length; i++) {
       let li = document.createElement('li');
       li.innerHTML = element;
       selection_container.appendChild(li);
+if (element === selection_arr[i][0]) {
+   li.id = `correct_selection${i}`;
+}
+else if (element === selection_arr[i][1]){
+   li.id = `wrong_selection${i}`;
+}
+else {
+   li.id = `wrong2_selection${i}`;
+}
+
+
+
    });
 
    // selection_arr[i].forEach(function (small_selection, index) {
