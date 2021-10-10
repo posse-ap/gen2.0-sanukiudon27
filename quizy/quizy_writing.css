@@ -1,0 +1,14 @@
+.correct{
+    background-color: rgb(78, 78, 238);
+    color: white;
+}
+.wrong{
+    background-color: orangered;
+    color: white;
+}
+li{
+ list-style: none;   
+}
+.none{
+    pointer-events: none;
+}

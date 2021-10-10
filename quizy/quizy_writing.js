@@ -59,8 +59,8 @@ for (let i = 0; i < selection_arr.length; i++) {
       // `<img src="${img_arr[i]}">`+
       `<ul id="selection_container${i}"></ul>` +
       "<div>" +
-      " <h2></h2>" +
-      `<p>正解は${answer_arr[i]}です！</p>` +
+      `<h2 id="the_answer${i}"></h2>` +
+      `<p id="what_is_answer${i}"></p>` +
       "</div>" +
       "</section>";
 
@@ -74,15 +74,15 @@ for (let i = 0; i < selection_arr.length; i++) {
       let li = document.createElement('li');
       li.innerHTML = element;
       selection_container.appendChild(li);
-if (element === selection_arr[i][0]) {
-   li.id = `correct_selection${i}`;
-}
-else if (element === selection_arr[i][1]){
-   li.id = `wrong_selection${i}`;
-}
-else {
-   li.id = `wrong2_selection${i}`;
-}
+      if (element === selection_arr[i][0]) {
+         li.id = `correct_selection${i}`;
+      }
+      else if (element === selection_arr[i][1]) {
+         li.id = `wrong_selection${i}`;
+      }
+      else {
+         li.id = `wrong2_selection${i}`;
+      }
 
 
 
@@ -98,10 +98,51 @@ else {
    //    else {
    //       small_selection.id = `wrong2_selection${i}`;
    //    }
-      
+
    // });
 
 
-}
+   const correct_selection = document.getElementById(`correct_selection${i}`);
+   const wrong_selection = document.getElementById(`wrong_selection${i}`);
+   const wrong2_selection = document.getElementById(`wrong2_selection${i}`);
+   const the_answer = document.getElementById(`the_answer${i}`);
+   const what_is_answer = document.getElementById(`what_is_answer${i}`);
 
+   correct_selection.addEventListener('click', correct_change);
+   wrong_selection.addEventListener('click', wrong_change);
+   wrong2_selection.addEventListener('click', wrong2_change);
+
+   function correct_change() {
+      correct_selection.classList.add('correct');
+      the_answer.innerHTML = '正解！';
+      what_is_answer.innerHTML = `正解は${answer_arr[i]}です！`;
+      // removeだと取り除かれるだけで押せなくなるわけではない
+      // wrong_selection.classList.remove('wrong');
+      // wrong2_selection.classList.remove('wrong');
+      wrong_selection.classList.add('none');
+      wrong2_selection.classList.add('none');
+      
+   }
+
+
+   function wrong_change() {
+      correct_selection.classList.add('correct');
+      wrong_selection.classList.add('wrong');
+      the_answer.innerHTML = '不正解！';
+      what_is_answer.innerHTML = `正解は${answer_arr[i]}です！`;
+   
+      correct_selection.classList.add('none');
+      wrong2_selection.classList.add('none');
+   }
+
+   function wrong2_change() {
+      correct_selection.classList.add('correct');
+      wrong2_selection.classList.add('wrong');
+      the_answer.innerHTML = '不正解！';
+      what_is_answer.innerHTML = `正解は${answer_arr[i]}です！`;
+      correct_selection.classList.add('none');
+      wrong_selection.classList.add('none');
+   }
+
+}
 
