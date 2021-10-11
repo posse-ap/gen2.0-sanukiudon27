@@ -58,9 +58,9 @@ for (let i = 0; i < selection_arr.length; i++) {
       // `<img src="img_arr${i}">`+
       // `<img src="${img_arr[i]}">`+
       `<ul id="selection_container${i}"></ul>` +
-      "<div>" +
-      `<h2 id="the_answer${i}"></h2>` +
-      `<p id="what_is_answer${i}"></p>` +
+      '<div class="resultContainer">' +
+      `<h2 id="the_answer${i}" class="theAnswer"></h2>` +
+      `<p id="what_is_answer${i}" class="whatIsAnswer"></p>` +
       "</div>" +
       "</section>";
 
@@ -121,6 +121,7 @@ for (let i = 0; i < selection_arr.length; i++) {
       // wrong2_selection.classList.remove('wrong');
       wrong_selection.classList.add('none');
       wrong2_selection.classList.add('none');
+      the_answer.classList.add('blueLine');
       
    }
 
@@ -133,6 +134,7 @@ for (let i = 0; i < selection_arr.length; i++) {
    
       correct_selection.classList.add('none');
       wrong2_selection.classList.add('none');
+      the_answer.classList.add('orangeLine');
    }
 
    function wrong2_change() {
@@ -142,6 +144,8 @@ for (let i = 0; i < selection_arr.length; i++) {
       what_is_answer.innerHTML = `正解は${answer_arr[i]}です！`;
       correct_selection.classList.add('none');
       wrong_selection.classList.add('none');
+      the_answer.classList.add('orangeLine');
+   
    }
 
 }
