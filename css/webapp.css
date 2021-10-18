@@ -1,0 +1,81 @@
+body{
+    width: 100%;
+}
+.main{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+}
+
+.main_left{
+    width: 50%;
+}
+
+.main_rigth{
+    display: flex;
+    width: 50%;
+    gap: 20px;
+}
+.hour_cal{
+background-color: aqua;
+height: 20vh;
+margin-bottom: 20px;
+display: flex;
+gap: 20px;
+}
+.today, .month, .total{
+    background-color: rgb(223, 22, 22);
+    width: 33.333%;
+}
+.line_graph{
+background-color: hotpink;
+height: 50vh;
+}
+.pie_chart_lng{
+background-color: blueviolet;
+width: 50%;
+}
+.pie_chart_content{
+background-color: brown;
+width: 50%;
+}
+header{
+    background-color: lawngreen;
+    margin-bottom: 20px;
+    height: 64px;
+}
+footer{
+    /* background-color: lightcoral;
+    height: 100px; */
+}
+
+/* header start*/
+header{
+    height: 64px;
+    display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.header_4th_week{
+    font-weight: 300;
+}
+.button{
+    color: white;
+    background: linear-gradient( 90deg, #1b71d4, #33d8e4);
+    padding: 10px 50px;
+border-radius: 20px;
+border: none;
+font-size: 12px;
+margin-right: 40px;
+}
+
+
+
+
+/* /header end*/
+
+
+
+
+
