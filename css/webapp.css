@@ -1,11 +1,54 @@
 body{
     width: 100%;
+    background-color: rgb(209, 208, 208);
+    font-size: 62.5%;
 }
+
+
+/* header start*/
+.header{
+    height: 64px;
+    display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+background-color: white;
+margin-bottom: 20px;
+}
+.header_4th_week{
+    font-weight: 300;
+    color: rgb(163, 233, 233);
+}
+.button{
+    color: white;
+    background: linear-gradient( 90deg, #1b71d4, #33d8e4);
+    padding: 10px 50px;
+border-radius: 20px;
+border: none;
+font-size: 12px;
+margin-right: 40px;
+}
+.logo{
+    width: 30%;
+    padding-right: 15px;
+    height: 2.5rem
+}
+.header_left{
+    display: flex;
+    width:30%;
+justify-content: center;
+align-items: center;
+}
+/* /header end*/
+
+
+/* main start */
 .main{
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     gap: 20px;
+    margin-bottom: 30px;
 }
 
 .main_left{
@@ -18,64 +61,78 @@ body{
     gap: 20px;
 }
 .hour_cal{
-background-color: aqua;
 height: 20vh;
 margin-bottom: 20px;
 display: flex;
 gap: 20px;
 }
 .today, .month, .total{
-    background-color: rgb(223, 22, 22);
     width: 33.333%;
 }
 .line_graph{
 background-color: hotpink;
 height: 50vh;
 }
+.line_graph img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    
+}
 .pie_chart_lng{
 background-color: blueviolet;
 width: 50%;
+}
+.pie_chart_lng img, .pie_chart_content img{
+    width: 100%;
+    height: 100%;
 }
 .pie_chart_content{
 background-color: brown;
 width: 50%;
 }
-header{
-    background-color: lawngreen;
-    margin-bottom: 20px;
-    height: 64px;
-}
-footer{
-    /* background-color: lightcoral;
-    height: 100px; */
-}
 
-/* header start*/
-header{
-    height: 64px;
+
+/* 3containerについて */
+.three_container{
+text-align: center;
+background-color: white;
+border-radius: 5px;
+}
+.date{
+    color: #529df3;
+margin: 15px 0;
+font-size: 1.3rem;
+    
+}
+.number{
+    font-weight: bold;
+font-size: 2rem;
+margin: 0;
+
+}
+.hour{
+    color: rgb(173, 206, 245);
+    font-size: 1.3rem;
+}
+/* 3containerについて　end */
+
+/* main end */
+
+
+
+/* footer  start*/
+.fotter_container{
     display: flex;
-justify-content: space-between;
-align-items: center;
+    align-items: center;
+    justify-content: center;
 }
-.header_4th_week{
-    font-weight: 300;
+i{
+font-size: 2rem;
+padding: 0 20px;
+color: rgb(108, 170, 245);
 }
-.button{
-    color: white;
-    background: linear-gradient( 90deg, #1b71d4, #33d8e4);
-    padding: 10px 50px;
-border-radius: 20px;
-border: none;
-font-size: 12px;
-margin-right: 40px;
+.footer_date{
+    font-size: 1.3rem;
 }
-
-
-
-
-/* /header end*/
-
-
-
-
-
+/* footer end */
