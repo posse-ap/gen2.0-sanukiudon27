@@ -1,0 +1,65 @@
+body{
+    font-size: 62.5%;
+    max-width: 900px;
+    border-radius: 5px;
+    /* background-color: rgb(207, 48, 48); */
+}
+.little_gray{
+    background-color: rgb(235, 233, 233);
+}
+
+/* header start */
+.header{
+    
+text-align: right;
+}
+i{
+    font-size: 2rem;
+/* width: 100%; */
+/* text-align: right; */
+color: rgb(110, 110, 110);
+padding: 5px;
+border-radius: 50%;
+}
+/* header end */
+
+
+/* main start */
+.main{
+    margin: 0 56px;
+}
+.main_top_date_hour{
+/* display: flex; */
+/* gap: 40px; */
+width: 100%;
+}
+.learn_date, .learn_hour{
+    width: calc(50% - 20px);
+    /* width: 50%; */
+    display: inline-block;
+    vertical-align: top;
+}
+.learn_date{
+    margin-right: 40px;
+}
+.learn_date div, .learn_hour div{
+    height: 50px;
+    border-radius: 5px;
+    
+}
+
+
+/* main end */
+
+/* footer start */
+.button {
+    color: white;
+    background: linear-gradient( 90deg, #1b71d4, #33d8e4);
+    padding: 10px 50px;
+    border-radius: 20px;
+    border: none;
+    font-size: 12px;
+    margin-right: 40px;
+    box-shadow: 0 5px 5px rgb(184, 234, 247);
+}
+/* footer end */
