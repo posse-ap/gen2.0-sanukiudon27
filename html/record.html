@@ -18,48 +18,82 @@
     <main class="main">
         <div class="main_top_date_hour">
             <div class="learn_date">
-                <p>学習日</p>
-                <div class="little_gray">
-                    <p>2020年10月27日</p>
-                </div>
+                <p class="title">学習日</p>
+                <input type="text" class="little_gray learn_date_input">
             </div>
             <div class="learn_hour">
-                <p>学習時間</p>
-                <div class="little_gray"></div>
+                <p class="title">学習時間</p>
+                <input type="text" class="little_gray learn_hour_input">
+                <!-- <div class="little_gray" id="leran_hour_input" class="little_gray"></div> -->
             </div>
         </div>
-        <div>
-            <div>
-                <div>
-                    <p>学習コンテンツ（複数選択可</p>
+        <div class="main_middle_area">
+            <div class="learn_multiple_area">
+                <div class="learn_content_multiple"> 
+                    <p class="title">学習コンテンツ（複数選択可)</p>
                     <div>
-                        <p>N予備校</p>
+                        <div class="flex_i"> 
+                            <i class="fas fa-check"></i>
+                            <p>N予備校</p>
+                        </div>
+                       <div class="flex_i">
+                        <i class="fas fa-check"></i>
                         <p>ドットインストール</p>
-                        <p>POSSE課題</p>
+                       </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>POSSE課題</p>
+                        </div>
+                
                     </div>
                 </div>
-                <div>
-                    <p>学習言語（複数選択可）</p>
+                <div class="learn_lang_multiple">
+                    <p class="title">学習言語（複数選択可）</p>
                     <div>
-                        <p>HTML</p>
-                        <p>CSS</p>
-                        <p>Javascript</p>
-                        <p>PHP</p>
-                        <p>Laravel</p>
-                        <p>SQL</p>
-                        <p>SHELL</p>
-                        <p>情報システム基礎知識（その他）</p>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>HTML</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>CSS</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>Javascript</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>PHP</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>Laravel</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>SQL</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>SHELL</p>
+                        </div>
+                        <div class="flex_i">
+                            <i class="fas fa-check"></i>
+                            <p>情報システム基礎知識（その他）</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <p>Twitter用コメント</p>
-                    <div></div>
+            <div class="twitter_area">
+                    <p class="title">Twitter用コメント</p>
                     <div>
+                        <textarea name="textarea" class="textarea" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="twitter_post">
+                        <i class="fas fa-check fa-another-check"></i>
                         <p>Twitterに自動投稿する</p>
                     </div>
-                </div>
             </div>
         </div>
     </main>
