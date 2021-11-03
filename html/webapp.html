@@ -43,15 +43,21 @@
                     </div>
                 </div>
                 <div class="line_graph">
-                    <img src="../img/折れ線グラフ.png" alt="">
+                    <!-- <img src="../img/折れ線グラフ.png" alt=""> -->
+                    <canvas id="myBarChart" class="line_graph_canvas" width="400px" height="290px">
+                    </canvas>
                 </div>
             </div>
             <div class="main_rigth">
                 <div class="pie_chart_lng">
-                    <img src="../img/円グラフ　学習言語.png" alt="">
+                    <!-- <img src="../img/円グラフ　学習言語.png" alt=""> -->
+                    <p class='pie_graph_title'>学習言語</p>
+                    <canvas id="myPieChart" class="pie_chart_canvas" height="600px"></canvas>
                 </div>
                 <div class="pie_chart_content">
-                    <img src="../img/円グラフ　コンテンツ.png" alt="">
+                    <!-- <img src="../img/円グラフ　コンテンツ.png" alt=""> -->
+                    <p class='pie_graph_title'>学習コンテンツ</p>
+                    <canvas id="myPieChartLang" height="600px"></canvas>
                 </div>
             </div>
         </main>
@@ -63,7 +69,7 @@
                 <i class="fas fa-angle-right"></i>
                 <!-- <i class="fas fa-times"></i> -->
             </div>
-             <div class="button_container">
+            <div class="button_container">
                 <button class="button default_none_button" id="modal_open_responsive">記録・投稿</button>
             </div>
         </footer>
@@ -137,18 +143,23 @@
             </div>
             <div class="main_right_area">
                 <div class="learn_hour">
-                    <p class="title">学習時間</p>
-                    <input type="text" class="little_gray learn_hour_input">
-
-
+                    <div>
+                        <p class="title">学習時間</p>
+                        <input type="text" class="little_gray learn_hour_input">
+                    </div>
                     <div class="twitter_area" id="order_jq">
                         <p class="title">Twitter用コメント</p>
                         <div>
-                            <textarea name="textarea" class="textarea  little_gray" cols="30" rows="10"></textarea>
+                            <textarea name="textarea" class="textarea  little_gray"　 id="content" cols="30" rows="10"></textarea>
                         </div>
                         <div class="twitter_post">
-                            <i class="fas fa-check fa-another-check"></i>
+                            <!-- <input class="fas fa-check fa-another-check" id="twitter_check">  -->
+                         <input type="checkbox" name="" id="twitter_check">
                             <p>Twitterに自動投稿する</p>
+
+                            <button  class="btn" style="background-color:#00aced; color:white;"
+                                type="button"><i class="fab fa-twitter"></i> Tweet</button>
+
                         </div>
                     </div>
                 </div>
@@ -160,16 +171,31 @@
             </div>
         </footer>
 
-        <div id="my-spinner" class="box_loading">
-            <!-- type1 〜 type8 はお好みで -->
-            <div class="spinner type1">
-                <span>Loading...</span>
-            </div>
+    </div>
+    <div id="my-spinner" class="box_loading">
+        <!-- type1 〜 type8 はお好みで -->
+        <div class="spinner type1">
+            <span>Loading...</span>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="../js/webapp.js"></script>
 
+    </div>
+    <div class="complete_container" id='complete_open'>
+        <div class="complete_container_fa-times-div">
+            <i class="fas fa-times little_gray" id="complete_close"></i>
+        </div>
+        <div class="complete_container_main_div">
+            <p class="awesome">AWESOME!</p>
+            <i class="fas fa-check fa-another-check"></i>
+            <p class="complete_letter">記録・投稿<br>完了しました</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- プラグインを読みこんでパーセント表示できるようになった -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+    <script src="../js/webapp.js"></script>
 </body>
 
 
