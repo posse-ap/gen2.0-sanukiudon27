@@ -8,6 +8,7 @@ const spinner = document.getElementById('my-spinner');
 const completeClose = document.getElementById('complete_close');
 const completeOpen = document.getElementById('complete_open');
 const twitterCheck = document.getElementById('twitter_check');
+const twitterCheckFontAwesome = document.getElementById('twitter_check_i');
 
 //ボタンがクリックされた時
 buttonOpen.addEventListener('click', modalOpen);
@@ -37,6 +38,7 @@ function modalClose() {
 
 
 // loading
+
 // loading_button.addEventListener('click', loading_start)
 // function loading_start() {
 //     spinner.style.display = 'block';
@@ -53,11 +55,95 @@ function completeContainerClose() {
     completeOpen.style.display = 'none';
 }
 
+
+// var notr = 0;
+// var rpt = document.getElementById("repeat-images");
+// var dftr = rpt.getAttribute("src");
+// function repeater(){
+// notr++;
+// if(notr % 2 !== 0)
+// rpt.setAttribute("src", rpt.dataset.secondImage);
+// else
+// rpt.setAttribute("src", dftr);
+// }
+
+// var not = 0;
+// function counter(){
+// not++;
+// document.twitterCheckFontAwesome.innerHTML = not;
+// }
+
+// console.log(not);
+
+
 // 自動更新のボタンを青くする
 twitterCheck.addEventListener('click', blue_change)
 function blue_change() {
-    twitterCheck.style.background = '#1b71d4'
+    twitterCheckFontAwesome.style.background = '#1b71d4'
+
 }
+
+// const cvs = document.getElementById('myBarChart');
+// cvs.setAttribute("width", 500);
+// cvs.setAttribute("height", 50);
+
+
+
+// ずっと止まってたやつ
+// if (twitterCheck.checked) {
+//     loading_button.addEventListener('click', function (event) {
+//         event.preventDefault();
+//         var left = Math.round(window.screen.width / 2 - 275);
+//         var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
+//         window.open(
+//             "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.getElementById("content").value),
+//             null,
+//             "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left=" + left + ",top=" + top);
+//     });
+// } else {
+//     loading_button.addEventListener('click', loading_start)
+//     function loading_start() {
+//         spinner.style.display = 'block';
+//         window.setTimeout(function () {
+//             completeOpen.style.display = 'block';
+//             spinner.style.display = 'none'
+//         }, 300);
+//     }
+// }
+
+
+// 遷移できたやつ
+// loading_button.off('click');
+loading_button.addEventListener('click', function () {
+    if (twitterCheck.checked) {
+        event.preventDefault();
+        var left = Math.round(window.screen.width / 2 - 275);
+        var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
+        window.open(
+            "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.getElementById("content").value),
+            null,
+            // "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left=" + left + ",top=" + top);
+        )
+    } else {
+        loading_button.addEventListener('click', loading_start)
+        function loading_start() {
+            spinner.style.display = 'block';
+            window.setTimeout(function () {
+                completeOpen.style.display = 'block';
+                spinner.style.display = 'none'
+            }, 3000);
+
+            // moduleの方も暗くする
+            // modal.classList.add("black_background");
+        }
+    }
+})
+
+
+
+
+
+
 
 
 // カレンダー
@@ -254,7 +340,7 @@ var myDoughnutChart = new Chart(ctx, {
     // },
     options: {
         legend: {             // 凡例の設定
-            position: "bottom",     // 表示位置
+            position: "bottom",    // 表示位置
             labels: {              // 凡例文字列の設定
                 fontSize: 14,
                 boxWidth: 12,
@@ -328,7 +414,7 @@ var myDoughnutChart = new Chart(ctx, {
 
 // twitter遷移
 
-// document.getElementById("twitter").addEventListener('click', function (event) {
+// document.getElementById("loading_button").addEventListener('click', function (event) {
 //     event.preventDefault();
 //     var left = Math.round(window.screen.width / 2 - 275);
 //     var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
@@ -349,23 +435,4 @@ var myDoughnutChart = new Chart(ctx, {
 //     }
 
 
-if (twitterCheck.checked) {
-    document.getElementById("loading_button").addEventListener('click', function (event) {
-        event.preventDefault();
-        var left = Math.round(window.screen.width / 2 - 275);
-        var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
-        window.open(
-            "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.getElementById("content").value),
-            null,
-            "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left=" + left + ",top=" + top);
-    });
-} else {
-    loading_button.addEventListener('click', loading_start)
-    function loading_start() {
-        spinner.style.display = 'block';
-        window.setTimeout(function () {
-            completeOpen.style.display = 'block';
-            spinner.style.display = 'none'
-        }, 300);
-    }
-}
+

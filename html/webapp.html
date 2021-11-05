@@ -26,35 +26,35 @@
         <main class="main">
             <div class="main_left">
                 <div class="hour_cal">
-                    <div class="today three_container">
+                    <div class="today three_container shadow">
                         <p class="date">Today</p>
                         <p class="number">3</p>
                         <p class="hour">hour</p>
                     </div>
-                    <div class="month three_container">
+                    <div class="month three_container shadow">
                         <p class="date">Month</p>
                         <p class="number">120</p>
                         <p class="hour">hour</p>
                     </div>
-                    <div class="total three_container">
+                    <div class="total three_container shadow">
                         <p class="date">Total</p>
                         <p class="number">1348</p>
                         <p class="hour">hour</p>
                     </div>
                 </div>
-                <div class="line_graph">
+                <div class="line_graph shadow">
                     <!-- <img src="../img/折れ線グラフ.png" alt=""> -->
-                    <canvas id="myBarChart" class="line_graph_canvas" width="400px" height="290px">
+                    <canvas id="myBarChart" width="300px" height="200px">
                     </canvas>
                 </div>
             </div>
             <div class="main_rigth">
-                <div class="pie_chart_lng">
+                <div class="pie_chart_lng shadow">
                     <!-- <img src="../img/円グラフ　学習言語.png" alt=""> -->
                     <p class='pie_graph_title'>学習言語</p>
-                    <canvas id="myPieChart" class="pie_chart_canvas" height="600px"></canvas>
+                    <canvas id="myPieChart" class="pie_chart_canvas" height="1000px"></canvas>
                 </div>
-                <div class="pie_chart_content">
+                <div class="pie_chart_content shadow">
                     <!-- <img src="../img/円グラフ　コンテンツ.png" alt=""> -->
                     <p class='pie_graph_title'>学習コンテンツ</p>
                     <canvas id="myPieChartLang" height="600px"></canvas>
@@ -150,15 +150,19 @@
                     <div class="twitter_area" id="order_jq">
                         <p class="title">Twitter用コメント</p>
                         <div>
-                            <textarea name="textarea" class="textarea  little_gray"　 id="content" cols="30" rows="10"></textarea>
+                            <textarea name="textarea" class="textarea  little_gray" 　 id="content" cols="30"
+                                rows="10"></textarea>
                         </div>
                         <div class="twitter_post">
-                            <!-- <input class="fas fa-check fa-another-check" id="twitter_check">  -->
-                         <input type="checkbox" name="" id="twitter_check">
-                            <p>Twitterに自動投稿する</p>
-
-                            <button  class="btn" style="background-color:#00aced; color:white;"
-                                type="button"><i class="fab fa-twitter"></i> Tweet</button>
+                            <!-- <label> <i class="fas fa-check fa-another-check" id="twitter_check"></i> -->
+                            <label class="label">
+                                <i class="fas fa-check fa-another-check" id="twitter_check_i">
+                                    <input type="checkbox" name="check" class='input_none' id="twitter_check" onclick="counter()"> 
+                                </i>
+                                <p>Twitterに自動投稿する</p>
+                            </label>
+                            <!-- <button  class="btn" style="background-color:#00aced; color:white;"
+                                type="button"><i class="fab fa-twitter"></i> Tweet</button> -->
 
                         </div>
                     </div>

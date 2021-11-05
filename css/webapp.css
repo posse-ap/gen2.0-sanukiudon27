@@ -85,7 +85,7 @@
 }
 
 .hour_cal {
-    height: 20vh;
+    /* height: 20vh; */
     margin-bottom: 20px;
     display: flex;
     gap: 20px;
@@ -98,7 +98,11 @@
 .line_graph {
     /* background-color: hotpink; */
     background-color: white;
-    height: calc(75vh - 20vh - 20px);
+    height: calc(75vh - 127px - 20px);
+
+ 
+        
+      
 }
 /* グラフ作るよ */
 .pie_graph_title{
@@ -136,7 +140,9 @@
     width: 50%;
 }
 
-
+.shadow{
+    box-shadow: 0 1px 10px 2px rgb(214, 213, 213);
+}
 /* 3containerについて */
 
 .three_container {
@@ -147,19 +153,19 @@
 
 .date {
     color: #2079bf;
-    margin: 15px 0;
-    font-size: 1.3rem;
+    margin: 10px 0 15px 0;
+    font-size: 1.1rem;
 }
 
 .number {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin: 0;
 }
 
 .hour {
     color: rgb(173, 206, 245);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 /* 3containerについて　end */
@@ -205,6 +211,8 @@ font-size: 1rem;
 .body_module {
     font-size: 62.5%;
     max-width: 900px;
+    width: 900px;
+    max-width: 100%;
     border-radius: 20px;
     background-color: white;
     position: absolute;
@@ -230,6 +238,9 @@ font-size: 1rem;
 
 .header_module {
     text-align: right;
+}
+.header_module .fa-times{
+    margin: 15px;
 }
 
 .fa-times {
@@ -291,6 +302,8 @@ font-size: 1rem;
 }
 
 
+
+
 /* twitter area(メインの右側） */
 
 .textarea {
@@ -332,7 +345,17 @@ font-size: 1rem;
 .button_container {
     
     text-align: center;
-  margin-bottom: 25px;
+  margin: 10px 0 20px;
+}
+
+
+.input_none{
+    display: none;
+}
+
+.label{
+    display: flex;
+    align-items: center;
 }
 
 /* footer end */
@@ -341,10 +364,11 @@ font-size: 1rem;
 
 .box_loading {
     position: fixed;
-    width: 300px;
-    height: 300px;
-    top: calc(50vh - 150px);
-    left: calc(50vw - 150px);
+    width: 900px;
+    height: 600px;
+    top: 100px;
+    left: calc(50% - 450px);
+    border-radius: 20px;
     z-index: 9;
     -webkit-transition: all 1.2s ease;
     /* 1.2秒でフェードアウト */
@@ -411,11 +435,11 @@ font-size: 1rem;
     display: none;
     /* display: block; */
 
-    background-color: rgb(197, 17, 17);
+    background-color: white;
     margin: 0 auto;
     /* なんでmax-width効かないの */
     width: 70vw;
-max-width: 900px;
+   max-width: 900px;
     height: 600px;
   
     border-radius: 20px;
@@ -423,6 +447,7 @@ max-width: 900px;
     display: none;
     top: 100px;
     left: calc(50% - 450px);
+/* text-align: center; */
     z-index: 3;
 }
 
@@ -437,10 +462,11 @@ height: 30px;
 }
 .complete_container_main_div{
 position: absolute;
-transform: translate(calc(50vw - 300px),calc(50vh - 50%));
+/* transform: translate(calc(50vw - 300px),calc(50vh - 50%)); */
 text-align: center;
 width: 100%;
-
+height: 200px;
+top: 170px;
 
 }
 .awesome{
@@ -560,6 +586,7 @@ width: 70%;
     /* 50%→100%にして横いっぱいにする */
     .main_left, .main_rigth {
         width: 100%;
+        margin-top: 40px;
     }
     /* 指定された間隔を取る */
     .hour_cal {
@@ -637,6 +664,25 @@ width: 70%;
     padding: 10px 100px;
     font-size: 1.2rem;
 
+}
+
+.complete_container{
+    display: none;
+    /* display: block; */
+
+    background-color: white;
+    margin: 0 auto;
+    /* なんでmax-width効かないの */
+    width: 100vw;
+    height: 600px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50px;
+    /* left: calc(50% - 50vw); */
+    left: 0;
+    /* left: calc(50% - 450px); */
+/* text-align: center; */
+    z-index: 3;
 }
 
 }
