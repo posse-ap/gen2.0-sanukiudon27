@@ -77,7 +77,7 @@
     /* background-color: white; */
 }
 
-.main_rigth {
+.main_right {
     display: flex;
     width: 50%;
     gap: 20px;
@@ -98,50 +98,88 @@
 .line_graph {
     /* background-color: hotpink; */
     background-color: white;
-    height: calc(75vh - 127px - 20px);
-
- 
-        
-      
+    height: calc(75vh - 127px - 20px); 
 }
+
 /* グラフ作るよ */
 .pie_graph_title{
     margin: 40px 0 0 20px;
     font-weight: bold;
     font-size: 1.2rem;
 }
-
-
-.line_graph img {
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
-}
-
-.pie_chart_lng {
-    /* background-color: blueviolet; */
+.pie_chart_lng, .pie_chart_content{
     background-color: white;
     width: 50%;
     height: 100%;
-
 }
-.pie_chart_canvas{
-    height: 75vh;
-}
-
-.pie_chart_lng img, .pie_chart_content img {
+.pie_chart_canvas_container{
+    margin-top: 30px;
     width: 100%;
-    height: 100%;
+    height: 50%;
 }
-
-.pie_chart_content {
-    /* background-color: brown; */
-    background-color: white;
-    width: 50%;
-}
-
 .shadow{
     box-shadow: 0 1px 10px 2px rgb(214, 213, 213);
+}
+
+
+/* 凡例の表示 */
+.legend{
+display: flex;
+flex-wrap: wrap;
+align-content: flex-start;
+}
+
+.legend p, .legend_second p{
+font-size: .8rem;
+margin-right: 10px;
+color: rgb(88, 88, 88);
+}
+
+
+.a{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 3px 0 10px;
+}
+.legend div, .legend_second div{
+    display: flex;
+    align-items: center;
+}
+.legend_js{
+background-color: #0345ec;
+}
+.legend_css{
+    background-color:  #0f71bd;
+}
+.legend_php{
+    background-color: #20bdde;
+}
+.legend_html{
+    background-color:  #4bd1fe;
+}
+.legend_laravel{
+    background-color:  #b29ef3;
+}
+.legend_sql{
+    background-color:  #6d46ec;
+}
+.legend_shell{
+    background-color: #4a17ef;
+}
+.legend_other{
+    background-color: #3105c0;
+}
+
+.legend_dot{
+    background-color: #0345ec;
+}
+.legend_N{
+    background-color: #0f71bd;
+}
+.legend_posse{
+    background-color: #20bdde;
 }
 /* 3containerについて */
 
@@ -208,7 +246,7 @@ font-size: 1rem;
 
 /* モーダルスタート */
 
-.body_module {
+.body_modal {
     font-size: 62.5%;
     max-width: 900px;
     width: 900px;
@@ -236,10 +274,10 @@ font-size: 1rem;
 
 /* header start */
 
-.header_module {
+.header_modal {
     text-align: right;
 }
-.header_module .fa-times{
+.header_modal .fa-times{
     margin: 15px;
 }
 
@@ -256,7 +294,7 @@ font-size: 1rem;
 
 /* main start */
 
-.main_module {
+.main_modal {
     margin: 0 56px;
     display: flex;
     gap: 40px;
@@ -325,11 +363,16 @@ font-size: 1rem;
     align-items: center;
 }
 
+.blue{
+    background-color: #1b71d4;
+}
+
+
 /* main end */
 
 /* footer start */
 
-.button_module {
+.button_modal {
     color: white;
     background: linear-gradient( 90deg, #0f71bc, #3ccfff);
     /* padding: 10px 50px; */
@@ -368,6 +411,8 @@ font-size: 1rem;
     height: 600px;
     top: 100px;
     left: calc(50% - 450px);
+    /* width: 100vw;
+height: 100vh; */
     border-radius: 20px;
     z-index: 9;
     -webkit-transition: all 1.2s ease;
@@ -554,7 +599,7 @@ line-height: 1.4rem;
 
 
 /* レスポンシブ対応 */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 599px) {
     .logo {
         padding: 0 15px;
         height: 2.5rem;
@@ -584,7 +629,7 @@ width: 70%;
         margin-bottom: 10px;
     }
     /* 50%→100%にして横いっぱいにする */
-    .main_left, .main_rigth {
+    .main_left, .main_right {
         width: 100%;
         margin-top: 40px;
     }
@@ -597,7 +642,7 @@ width: 70%;
     .line_graph {
         margin: 16px 0;
     }
-    .main_rigth {
+    .main_right {
         gap: 16px;
     }
     .default_none_button{
@@ -607,7 +652,7 @@ width: 70%;
 
 
     /* モーダルのレスポンシブ */
-    .body_module {
+    .body_modal {
         font-size: 62.5%;
         width: 100%;
         border-radius: 20px;
@@ -622,14 +667,14 @@ width: 70%;
         left: 0;
         z-index: 2;
     }
-    .main_module{
+    .main_modal{
         display: block;
         margin: 0 20px;
     }
     .main_left_area, .main_right_area{
         width: 100%;
      }
-    .header_module {
+    .header_modal {
         margin-top: 20px;
     }
    
@@ -659,7 +704,7 @@ width: 70%;
         font-size: .7rem;
     }
    
-.button_module{
+.button_modal{
     margin: 0 auto 20px;
     padding: 10px 100px;
     font-size: 1.2rem;
@@ -684,5 +729,178 @@ width: 70%;
 /* text-align: center; */
     z-index: 3;
 }
+
+.legend p{
+    font-size: .7rem;
+    margin-right: 5px;
+    }
+    
+    
+    .a{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 3px 0 10px;
+    }
+    .pie_chart_canvas_container{
+        margin-top: 10px;
+        width: 100%;
+        height: 300px;
+    }
+
+}
+
+@media screen and ( min-width: 600px ) and ( max-width: 1024px ){
+    .logo {
+        /* padding: 0 15px;
+        height: 2.5rem;
+width: 70%; */
+width: 20%;
+margin-left: 30px;
+    }
+    .header{
+        height: 50px;
+        margin-top: 14px;
+        display: block;
+    }
+    .header_left{ 
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    .resposive_none_button{
+        display: none;
+    }
+    /* 全部縦並びにする */
+    .main {
+        display: block;
+        margin-bottom: 10px;
+    }
+    /* 50%→100%にして横いっぱいにする */
+    .main_left, .main_right {
+        width: 100%;
+        margin-top: 40px;
+    }
+    /* 指定された間隔を取る */
+    .hour_cal {
+        gap: 16px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid rgb(173, 206, 245);
+    }
+    .line_graph {
+        margin: 16px 0;
+    }
+    .main_right {
+        gap: 16px;
+    }
+    .default_none_button{
+        display: block;
+       
+        }
+
+
+    /* モーダルのレスポンシブ */
+    .body_modal {
+        font-size: 62.5%;
+        width: 100%;
+        border-radius: 20px;
+        background-color: white;
+        position: absolute;
+        display: none;
+        /* displayをblockに一時的に変更 */
+        /* display: block; */
+        /* top: 100px; */
+        /* left: calc(50% - 450px); */
+        top: 50px;
+        left: 0;
+        z-index: 2;
+    }
+    .main_modal{
+        display: block;
+        margin: 0 20px;
+    }
+    .main_left_area, .main_right_area{
+        width: 100%;
+     }
+    .header_modal {
+        margin-top: 20px;
+    }
+   
+
+    .flex_i {
+        display: inline-flex;
+        margin: 0 8px 8px 0;
+        padding: 4px 6px;
+    }
+    .flex_i p{
+        font-size: .5rem;
+        letter-spacing: .15em;
+    }
+    .title:not(.twitter_area p) {
+        margin-bottom: 10px;
+    }
+    .title:not(.learn_date p){
+        margin-top: 24px;
+    }
+    .twitter_post{
+        margin-bottom: 22px;
+    }
+    .twitter_post i{
+       height: 15px;
+    }
+    .twitter_post p{
+        font-size: .7rem;
+    }
+   
+.button_modal{
+    margin: 0 auto 20px;
+    padding: 10px 100px;
+    font-size: 1.2rem;
+
+}
+
+.complete_container{
+    display: none;
+    /* display: block; */
+
+    background-color: white;
+    margin: 0 auto;
+    /* なんでmax-width効かないの */
+    width: 100vw;
+    height: 600px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50px;
+    /* left: calc(50% - 50vw); */
+    left: 0;
+    /* left: calc(50% - 450px); */
+/* text-align: center; */
+    z-index: 3;
+}
+
+.legend p{
+    font-size: .8rem;
+    margin-right: 10px;
+    }
+    
+    
+    .a{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 3px 0 10px;
+    }
+    .pie_chart_canvas_container{
+        margin-top: 10px;
+        width: 100%;
+        height: 300px;
+    }
+    
+
+
+
+
 
 }

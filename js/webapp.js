@@ -79,7 +79,7 @@ function completeContainerClose() {
 // 自動更新のボタンを青くする
 twitterCheck.addEventListener('click', blue_change)
 function blue_change() {
-    twitterCheckFontAwesome.style.background = '#1b71d4'
+    twitterCheckFontAwesome.classList.toggle('blue')
 
 }
 
@@ -112,6 +112,19 @@ function blue_change() {
 // }
 
 
+// // var targetBtn = document.getElementById("cde");
+// // targetBtnの値を取得
+// var num = 0;
+// // targetBtnをクリックしたとき
+// twitterCheckFontAwesome.onclick = function(){
+//     num++;
+//     // twitterCheck.value =+ num;
+//     }
+// console.log(num);
+
+
+
+
 // 遷移できたやつ
 // loading_button.off('click');
 loading_button.addEventListener('click', function () {
@@ -128,16 +141,20 @@ loading_button.addEventListener('click', function () {
         loading_button.addEventListener('click', loading_start)
         function loading_start() {
             spinner.style.display = 'block';
+            // modal.classList.add('black_background');
             window.setTimeout(function () {
                 completeOpen.style.display = 'block';
                 spinner.style.display = 'none'
             }, 3000);
 
-            // moduleの方も暗くする
+            // modalの方も暗くする
             // modal.classList.add("black_background");
         }
     }
 })
+
+
+
 
 
 
@@ -344,7 +361,9 @@ var myDoughnutChart = new Chart(ctx, {
             labels: {              // 凡例文字列の設定
                 fontSize: 14,
                 boxWidth: 12,
-            }
+            },
+            // 凡例非表示にする（widthを設定するため）
+            display: false 
         },
         layout: {
             padding: {
@@ -394,8 +413,8 @@ var myDoughnutChart = new Chart(ctx, {
             labels: {              // 凡例文字列の設定
                 fontSize: 14,
                 boxWidth: 12,
-
             },
+            display: false
         },
         layout: {
             padding: {
