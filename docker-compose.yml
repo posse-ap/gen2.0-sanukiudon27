@@ -35,7 +35,7 @@ services:
       MYSQL_USER: dondon
       MYSQL_PASSWORD: mymy
       MYSQL_ROOT_PASSWORD: mymy
- 
+      
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
