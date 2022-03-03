@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS big_question;
 CREATE TABLE big_question (
 id INT NOT NULL AUTO_INCREMENT,
-question_title VARCHAR(225) NOT NULL AS name
+question_title VARCHAR(225) NOT NULL AS name,
+PRIMARY KEY(id)
 );
 
 
