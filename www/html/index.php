@@ -2,7 +2,10 @@
 // $webroot = $_SERVER['DOCUMENT_ROOT'];
 // include($webroot."/www/html/connect.php"); 
 
-echo "Hello, PHP on Docker!";
+require 'connect.php';
 
 
-// phpinfo();
+
+
+?>
+

@@ -21,8 +21,7 @@ try {
   ]
   );
   
-  echo "<p>DB接続に成功しました。</p>";
-  $pdo = null;
+  // echo "<p>DB接続に成功しました。</p>";
   
   // SQL実行
   // $sql = "SELECT id, user_name FROM user";
@@ -37,6 +36,7 @@ try {
   echo $e->getMessage();
   exit();
 }
+$pdo = null;
 
 
 ?>
