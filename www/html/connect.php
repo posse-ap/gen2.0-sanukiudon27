@@ -3,7 +3,7 @@
 // phpinfo();
 
 // DB接続情報
-$user = 'root';
+$user = 'dondon';
 $pass = 'mymy';
 $dbnm = 'first';
 $host = 'db';
@@ -24,7 +24,7 @@ try {
   // echo "<p>DB接続に成功しました。</p>";
   
   // SQL実行
-  $sql = "SELECT * FROM questions";
+  $sql = "SELECT * FROM big_question";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
   

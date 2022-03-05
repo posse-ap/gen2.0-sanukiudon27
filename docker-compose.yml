@@ -30,13 +30,12 @@ services:
       - ./initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     stdin_open: true
-      
-
-
     environment:
       MYSQL_DATABASE: first
-      MYSQL_USER: root
+      MYSQL_USER: dondon
       MYSQL_PASSWORD: mymy
       MYSQL_ROOT_PASSWORD: mymy
+    restart: always
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
       
 # データベースとユーザーを記述
