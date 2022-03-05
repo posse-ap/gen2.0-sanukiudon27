@@ -24,13 +24,13 @@ try {
   // echo "<p>DB接続に成功しました。</p>";
   
   // SQL実行
-  // $sql = "SELECT id, user_name FROM user";
-  // $stmt = $pdo->prepare($sql);
-  // $stmt->execute();
+  $sql = "SELECT * FROM questions";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
   
-  // // 結果の取得
-  // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  //var_dump($result);
+  // 結果の取得
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  var_dump($result);
 } catch (PDOException $e) {
   echo "<p>DB接続エラー</p>";
   echo $e->getMessage();
