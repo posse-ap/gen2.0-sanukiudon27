@@ -9,6 +9,7 @@ services:
       - ./www/html:/var/www/html
     depends_on:
       - php
+    stdin_open: true
  
   php:
     build: ./php
@@ -17,6 +18,7 @@ services:
       - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
     depends_on:
       - db
+    stdin_open: true
  
   db:
     image: mysql:latest
@@ -25,22 +27,16 @@ services:
     volumes:
       # - ./mysql/data/:/var/lib/mysql
       - ./mysql/data:/var/lib/mysql
-      - ./mysql/sql:/docker-entrypoint-initdb.d
-      - ./mysql/my.conf:/etc/mysql/conf.d
+      - ./initdb.d:/docker-entrypoint-initdb.d
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    stdin_open: true
       
 
 
     environment:
       MYSQL_DATABASE: first
-      MYSQL_USER: dondon
+      MYSQL_USER: root
       MYSQL_PASSWORD: mymy
       MYSQL_ROOT_PASSWORD: mymy
       
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    ports:
-      - 8888:80
-    depends_on:
-      - db
-
 # データベースとユーザーを記述

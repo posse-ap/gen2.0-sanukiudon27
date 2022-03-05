@@ -1,3 +1,4 @@
+use first;
 DROP TABLE IF EXISTS big_question;
 CREATE TABLE big_question (
 id INT NOT NULL AUTO_INCREMENT,

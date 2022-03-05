@@ -3,7 +3,7 @@
 // phpinfo();
 
 // DB接続情報
-$user = 'dondon';
+$user = 'root';
 $pass = 'mymy';
 $dbnm = 'first';
 $host = 'db';
