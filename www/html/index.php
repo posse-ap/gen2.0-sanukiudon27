@@ -4,10 +4,6 @@
 
 require 'connect.php';
 
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -21,10 +17,6 @@ require 'connect.php';
 </head>
 
 <body>
-
-
-
-    <div id=quizy_writing_container></div>
 
    <?php $img_arr = [
    ["https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png", "img1"],
@@ -57,39 +49,23 @@ $selection_arr = [
    <!-- let content = -->
     <section>
       <h1><?= $i+1; ?> . この地名はなんて読む</h1>
-      <img src="<?= $img_arr[$i][0]; ?>">
+      <!-- <img src="<?= $img_arr[$i][0]; ?>"> -->
+      <!-- <img src="./img/1-2.png" alt=""> -->
+      <!-- <img src="./img/<?= $id . '-' . $i+1 . '.png'; ?>"> -->
+      <img src="./img/<?= $id ?>-<?= $i+1 ?>.png" ?>
     <ul id="selection_container<?= $i; ?>">
       <li>
-      <?php 
-       for($u=0; $u<3; $u++) :
-         echo $selection_arr[$i][$u] . PHP_EOL;
-        endfor; ?>
+          <?php 
+          for($u=0; $u<3; $u++) :
+           //  echo $selection_arr[$i][$u] . PHP_EOL;
+           echo $separate[$i][$u]['name_list'] . PHP_EOL;
+          endfor; ?>
       </li>
      </ul>
-      <!-- <div class="resultContainer">
-        <h2 id="the_answer${i}" class="theAnswer"></h2>
-        <p id="what_is_answer${i}" class="whatIsAnswer"></p>
-      </div> -->
     </section>
 
     </div>
-   <!-- document.getElementById('quizy_writing_container').insertAdjacentHTML('beforeend', content); -->
-
-   <!-- const shuffle_choice = shuffle([...selection_arr[i]]);
-
-   shuffle_choice.forEach(element => {
-      let li = document.createElement('li');
-      li.innerHTML = element;
-      selection_container.appendChild(li);
-      if (element === selection_arr[i][0]) {
-         li.id = `correct_selection${i}`;
-      }
-      else if (element === selection_arr[i][1]) {
-         li.id = `wrong_selection${i}`;
-      }
-      else {
-         li.id = `wrong2_selection${i}`;
-      } -->
+ 
 
 <?PHP endfor ;?>
 

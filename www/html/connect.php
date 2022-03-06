@@ -1,8 +1,4 @@
 <?php
-
-// phpinfo();
-// declare(strict_types=1);  // 強い型付けの設定
-
 // DB接続情報
 $user = 'dondon';
 $pass = 'mymy';
@@ -34,9 +30,9 @@ try {
   // $showed = "SELECT * FROM showed WHERE big_question_id = ?";
   $stmt2 = $pdo->prepare("SELECT name, id FROM showed WHERE id = $id");
   $stmt2->execute();
-  $stmt3 = $pdo->prepare("SELECT name_list FROM showed WHERE id = $id");
+  $stmt3 = $pdo->prepare("SELECT DISTINCT id, name_list FROM showed WHERE id = $id");
   $stmt3->execute();
-  $stmt4 = $pdo->prepare("SELECT image,question_id FROM showed");
+  $stmt4 = $pdo->prepare("SELECT image,question_id FROM showed WHERE id = $id");
   $stmt4->execute();
 
   $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -44,25 +40,21 @@ try {
   $result4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
   $count = count($result2);
-  echo $result2[$id]['name'];
 
-  // var_dump($result2);
-  echo $result4[$id]['image'];
+$separate = array_chunk($result3, 3);
+// var_dump($separate);
 
-  for($i=0; $i<$count; $i++){
-    echo $result3[$i]['name_list'] . PHP_EOL;
-  }
+  // for($i=0; $i<$count; $i++){
+    //   echo $result3[$i]['name_list'] . PHP_EOL;
+    // }
 
-  // SQL実行
-  $sql = "SELECT * FROM big_questions";
+    // SQL実行
+    $sql = "SELECT * FROM big_questions";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
   // 結果の取得
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  // var_dump($result);
-  // echo $result[0]['name'];
-  // echo $result;
-  // echo $result[$id - 1]['name'];
+
 } catch (PDOException $e) {
   echo "<p>DB接続エラー</p>";
   echo $e->getMessage();
