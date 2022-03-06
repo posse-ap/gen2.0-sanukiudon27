@@ -38,22 +38,44 @@ require 'connect.php';
    ["https://d1khcm40x1j0f.cloudfront.net/words/8cad76c39c43e2b651041c6d812ea26e.png", "img9"],
    ["https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png", "img10"],
 ];
-?>
 
-   <?PHP for ($i = 0; $i < 2; $i++) { ?>
+$selection_arr = [
+    ['たかなわ', 'こうわ', 'たかわ'],
+    ['かめいど', 'かめと', 'かめど'],
+    ['こうじまち', 'かゆまち', 'おかとまち'],
+    ['おなりもん', 'おかどもん', 'ごせいもん'],
+    ['とどろき', 'たたら', 'たたりき'],
+    ['しゃくじい', 'いじい', 'せきこうい'],
+    ['ぞうしき', 'ざっしょく', 'ざっしき'],
+    ['おかちまち', 'ごしろちょう', 'みとちょう'],
+    ['ししぼね', 'しこね', 'ろっこつ'],
+    ['こぐれ', 'こばく', 'こしゃく'],
+ ];
+?>
+ <div id=quizy_writing_container>
+   <?PHP for ($i = 0; $i < 2; $i++) :?>
    <!-- let content = -->
-      <section>
+    <section>
       <h1><?= $i+1; ?> . この地名はなんて読む</h1>
       <img src="<?= $img_arr[$i][0]; ?>">
-      <!-- `<img src="${img_arr[i][0]}" alt="${img_arr[i][1]}">` + -->
-      <ul id="selection_container<?= $i; ?>"></ul>
-      <div class="resultContainer">
-      <h2 id="the_answer${i}" class="theAnswer"></h2>
-      <p id="what_is_answer${i}" class="whatIsAnswer"></p>
-      </div>
-      </section>
+    <ul id="selection_container<?= $i; ?>">
+      <li>
+      <?php 
+       for($u=0; $u<3; $u++) :
+         echo $selection_arr[$i][$u] . PHP_EOL;
+        endfor; ?>
+      </li>
+     </ul>
+      <!-- <div class="resultContainer">
+        <h2 id="the_answer${i}" class="theAnswer"></h2>
+        <p id="what_is_answer${i}" class="whatIsAnswer"></p>
+      </div> -->
+    </section>
 
-   <!-- document.getElementById('quizy_writing_container').insertAdjacentHTML('beforeend', content);
+    </div>
+   <!-- document.getElementById('quizy_writing_container').insertAdjacentHTML('beforeend', content); -->
+
+   <!-- const shuffle_choice = shuffle([...selection_arr[i]]);
 
    shuffle_choice.forEach(element => {
       let li = document.createElement('li');
@@ -69,7 +91,7 @@ require 'connect.php';
          li.id = `wrong2_selection${i}`;
       } -->
 
-<?PHP };?>
+<?PHP endfor ;?>
 
     <!-- <script src="quizy.js"></script> -->
 </body>
