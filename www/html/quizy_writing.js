@@ -50,6 +50,7 @@ function shuffle(getyu) {
    return getyu;
 }
 
+
 for (let i = 0; i < selection_arr.length; i++) {
    let content =
       "<section>" +

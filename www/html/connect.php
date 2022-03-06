@@ -36,7 +36,7 @@ try {
   $stmt2->execute();
   $stmt3 = $pdo->prepare("SELECT name_list FROM showed WHERE id = $id");
   $stmt3->execute();
-  $stmt4 = $pdo->prepare("SELECT image FROM showed WHERE id = $id");
+  $stmt4 = $pdo->prepare("SELECT image,question_id FROM showed");
   $stmt4->execute();
 
   $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -46,7 +46,7 @@ try {
   $count = count($result2);
   echo $result2[$id]['name'];
 
-  // var_dump($result4);
+  // var_dump($result2);
   echo $result4[$id]['image'];
 
   for($i=0; $i<$count; $i++){
