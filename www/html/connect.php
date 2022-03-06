@@ -45,7 +45,7 @@ try {
 // var_dump($result5);
 // echo $result5[1]['valid'];
 
-  $count = count($result2);
+  // $count = count($result2);
 
 $separate = array_chunk($result3, 3);
 $separate_valid = array_chunk($result5, 3);
