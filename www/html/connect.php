@@ -43,6 +43,8 @@ try {
 
 $separate = array_chunk($result3, 3);
 // var_dump($separate);
+// $shuffles = shuffle($separate);
+
 
   // for($i=0; $i<$count; $i++){
     //   echo $result3[$i]['name_list'] . PHP_EOL;

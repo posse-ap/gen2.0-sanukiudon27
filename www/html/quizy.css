@@ -1,0 +1,73 @@
+section{
+  /* text-align: center;  */
+/* padding: 0 20%; */
+width: 500px;
+margin: 0 auto 100px;
+
+}
+li{
+   padding: 15px 0 15px 10px;
+   box-shadow: 0 0 3px rgb(202, 202, 202);
+   margin-bottom: 10px;
+   font-weight: bold;
+
+}
+h1{
+   position: relative;
+   font-size: 20px;
+   letter-spacing: 0.3em;
+   padding: 10px 0;
+}
+h1::after{
+   position: absolute;
+   bottom: 5px;
+   left: 1px;
+   content: '';
+   border-bottom: solid 2px rgb(79, 167, 79);
+   width: 150px;
+   
+  
+}
+.resultContainer{
+   background-color: rgb(240, 238, 238);
+   margin-top: 10px;
+   /* padding-top: 1px; */
+}
+.theAnswer{
+   font-size: 20px;
+   line-height: 40px;
+   font-weight: 500;
+   /* margin-bottom: 0; */
+   margin-left: 20px;
+}
+.whatIsAnswer{
+margin-top: 0;
+   margin-left: 20px;
+   margin-bottom: 30px;
+   line-height: 40px;
+}
+
+.correct{
+   background-color: rgb(78, 78, 238);
+   color: white;
+}
+.wrong{
+   background-color: orangered;
+   color: white;
+}
+li{
+list-style: none;   
+}
+.none{
+   pointer-events: none;
+}
+
+.blueLine{
+   display: inline-block;
+border-bottom: 5px solid rgb(78, 78, 238);
+
+}
+.orangeLine{
+display: inline-block;
+border-bottom: 5px solid orangered;
+}
