@@ -63,6 +63,8 @@ $separate = array_chunk($result3, 3);
   exit();
 }
 $pdo = null;
-
-
 ?>
+
+<pre>
+  <?php var_dump($separate)?>
+</pre>

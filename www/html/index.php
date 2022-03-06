@@ -32,9 +32,9 @@ require 'connect.php';
         <?php shuffle($separate[$i])?>
           <?php  for ($u = 0; $u < 3; $u++) : ?>
               <li>
-            <?=  $separate[$i][$u]['name_list'] . PHP_EOL; ?>
+                <?=  $separate[$i][$u]['name_list'] . PHP_EOL; ?>
               </li>
-              <?php  endfor; ?>
+          <?php  endfor; ?>
         </ul>
       </section>
 
