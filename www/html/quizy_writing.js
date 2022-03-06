@@ -132,7 +132,6 @@ for (let i = 0; i < selection_arr.length; i++) {
       wrong_selection.classList.add('wrong');
       the_answer.innerHTML = '不正解！';
       what_is_answer.innerHTML = `正解は${answer_arr[i]}です！`;
-   
       correct_selection.classList.add('none');
       wrong2_selection.classList.add('none');
       the_answer.classList.add('orangeLine');
@@ -146,8 +145,6 @@ for (let i = 0; i < selection_arr.length; i++) {
       correct_selection.classList.add('none');
       wrong_selection.classList.add('none');
       the_answer.classList.add('orangeLine');
-   
    }
-
 }
 

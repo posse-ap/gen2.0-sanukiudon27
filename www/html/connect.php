@@ -34,16 +34,26 @@ try {
   $stmt3->execute();
   $stmt4 = $pdo->prepare("SELECT image,question_id FROM showed WHERE id = $id");
   $stmt4->execute();
+  $stmt5 = $pdo->prepare("SELECT valid FROM showed WHERE id = $id");
+  $stmt5->execute();
 
   $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
   $result3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
   $result4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
+  $result5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+
+// var_dump($result5);
+// echo $result5[1]['valid'];
 
   $count = count($result2);
 
 $separate = array_chunk($result3, 3);
+$separate_valid = array_chunk($result5, 3);
+var_dump($separate_valid);
 // var_dump($separate);
 // $shuffles = shuffle($separate);
+
+
 
 
   // for($i=0; $i<$count; $i++){
@@ -65,6 +75,6 @@ $separate = array_chunk($result3, 3);
 $pdo = null;
 ?>
 
-<pre>
+<!-- <pre>
   <?php var_dump($separate)?>
-</pre>
+</pre>  -->

@@ -64,7 +64,7 @@ CREATE TABLE
 showed
 AS
 (SELECT 
-big_questions.name, questions.big_question_id, questions.image, choices.question_id, choices.name_list, big_questions.id
+big_questions.name, questions.big_question_id, questions.image, choices.question_id, choices.name_list, big_questions.id, valid
 
 FROM 
 (questions
