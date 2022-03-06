@@ -20,56 +20,49 @@ try {
   $pdo = new PDO($connect, $user, $pass,[
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     // 型変換が自動でされないようにエミュレートモードを変更
+    // https://unskilled.site/%E3%81%AA%E3%82%93%E3%81%A7php%E3%81%AFmysql%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AA%E3%82%B6%E3%83%AB%E3%83%88%E3%81%8Cint%E5%9E%8B%E3%81%AE%E3%81%AF%E3%81%9A%E3%81%AA%E3%81%AE%E3%81%ABstring%E5%9E%8B/
     PDO::ATTR_EMULATE_PREPARES=>false
   ]
-  );
+);
+// header('Content-type: image/png');
   
   if(isset($_GET['id'])) { $id = $_GET['id']; }
   
-
+  
 
   // step5
   // $showed = "SELECT * FROM showed WHERE big_question_id = ?";
-  $stmt2 = $pdo->prepare("SELECT * FROM showed");
+  $stmt2 = $pdo->prepare("SELECT name, id FROM showed WHERE id = $id");
   $stmt2->execute();
-  $stmt3 = $pdo->prepare("SELECT name_list FROM showed");
+  $stmt3 = $pdo->prepare("SELECT name_list FROM showed WHERE id = $id");
   $stmt3->execute();
+  $stmt4 = $pdo->prepare("SELECT image FROM showed WHERE id = $id");
+  $stmt4->execute();
 
   $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-  var_dump($result2);
-  // print_r($result2);
   $result3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-  // var_dump($result3);
-  // var_dump($result2);
-  echo $result2['id']['name'];
-  for($i=0; $i<6; $i++){
+  $result4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
+
+  $count = count($result2);
+  echo $result2[$id]['name'];
+
+  // var_dump($result4);
+  echo $result4[$id]['image'];
+
+  for($i=0; $i<$count; $i++){
     echo $result3[$i]['name_list'] . PHP_EOL;
   }
-  
-  // echo $result3[$id-1]['name_list'];
-  // echo $result3[$id-2]['name_list'];
-  // たかなわ　0
 
-
-// echo $todo[$id - 1]['name'] . PHP_EOL;
-// echo $todo[$id - 1]['name_list'];
-// echo $todo[$id]['name_list'];
-// echo $todo[$id + 1]['name_list'];
-// echo $todo[$id + 2]['name_list'];
-// echo $todo[$id + 3]['name_list'];
-// echo $todo[$id + 4]['name_list'];
-
-  
   // SQL実行
   $sql = "SELECT * FROM big_questions";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
   // 結果の取得
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  var_dump($result);
-  echo $result[0]['name'];
-  echo $result;
-  echo $result[$id - 1]['name'];
+  // var_dump($result);
+  // echo $result[0]['name'];
+  // echo $result;
+  // echo $result[$id - 1]['name'];
 } catch (PDOException $e) {
   echo "<p>DB接続エラー</p>";
   echo $e->getMessage();
