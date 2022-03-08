@@ -16,8 +16,8 @@ services:
     volumes:
       - ./www/html:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     stdin_open: true
  
   db:
@@ -26,6 +26,7 @@ services:
       - 13306:3306
     volumes:
       # - ./mysql/data/:/var/lib/mysql
+      
       - ./mysql/data:/var/lib/mysql
       - ./initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf

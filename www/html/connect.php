@@ -6,19 +6,20 @@ $dbnm = 'first';
 $host = 'db';
 $charset = 'utf8';
 // 接続先DBリンク
-$connect = "mysql:host={$host};dbname={$dbnm};charset={$charset}";
- 
+$connect = "mysql:host=db;dbname=first;charset=utf8";
+
 try {
   // DB接続
   // $pdo = new PDO($connect, $user, $pass);
   // $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $pdo = new PDO($connect, $user, $pass,[
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    // 型変換が自動でされないようにエミュレートモードを変更
-    // https://unskilled.site/%E3%81%AA%E3%82%93%E3%81%A7php%E3%81%AFmysql%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AA%E3%82%B6%E3%83%AB%E3%83%88%E3%81%8Cint%E5%9E%8B%E3%81%AE%E3%81%AF%E3%81%9A%E3%81%AA%E3%81%AE%E3%81%ABstring%E5%9E%8B/
-    PDO::ATTR_EMULATE_PREPARES=>false
-  ]
+  $pdo = new PDO($connect, $user, $pass,
+  // [
+  //   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  //   PDO::ATTR_EMULATE_PREPARES => false
+  //   // 型変換が自動でされないようにエミュレートモードを変更
+  //   // https://unskilled.site/%E3%81%AA%E3%82%93%E3%81%A7php%E3%81%AFmysql%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AA%E3%82%B6%E3%83%AB%E3%83%88%E3%81%8Cint%E5%9E%8B%E3%81%AE%E3%81%AF%E3%81%9A%E3%81%AA%E3%81%AE%E3%81%ABstring%E5%9E%8B/
+  // ]
 );
 // header('Content-type: image/png');
   
@@ -68,7 +69,7 @@ var_dump($separate_valid);
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-  echo "<p>DB接続エラー</p>";
+  echo "<p>DB接続エラーだよん</p>";
   echo $e->getMessage();
   exit();
 }

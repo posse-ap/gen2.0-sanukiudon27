@@ -32,7 +32,6 @@ require 'connect.php';
           <?php for ($u = 0; $u < 3; $u++) : ?>
             <li id="<?php echo $i ?>-<?php echo $u; ?>">
             <!-- <?= $separate5[$i][$u]['valid']; ?> -->
-            
               <?= $separate[$i][$u]['name_list']; ?>
             </li>
           <?php endfor; ?>
@@ -45,13 +44,9 @@ require 'connect.php';
       <?php var_dump($separate[$i][$id]['name_list']); ?>
     <?php endfor; ?>
   </div>
+
   <script>
-    // <?php
-        // foreach($separate[$i]['name_list'] as $sepa) :
-
-        ?>
-
-    const correct_selection = document.getElementById("<?php echo $i ?>-1");
+    const correct_selection = document.getElementById("<?php echo $i ?>");
     const wrong_selection = document.getElementById(`wrong_selection${i}`);
     const wrong2_selection = document.getElementById(`wrong2_selection${i}`);
     const the_answer = document.getElementById(`the_answer${i}`);
