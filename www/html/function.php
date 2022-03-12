@@ -10,6 +10,21 @@ $time = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return array_sum(array_column($time, 'time'));
 }
 
+function sum_month ($pdo){
+  $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m') AS month, time from sum");
+  $stmt->execute();
+  $month = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $sum=0;
+  for ($i = 0; $i < count($month); $i++) {
+    if ($month[$i]['month'] == date("Y-m")) {
+    $sum += $month[$i]['time'];
+    };
+  }
+  return $sum;
+}
+
+
+
 
 
 
