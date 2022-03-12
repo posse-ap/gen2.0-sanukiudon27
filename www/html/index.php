@@ -49,6 +49,7 @@ require 'connect.php';
     const the_answer = document.getElementById(`the_answer${i}`);
     const what_is_answer = document.getElementById(`what_is_answer${i}`);
 
+    
   
     </script>
       <?php endfor; ?>
