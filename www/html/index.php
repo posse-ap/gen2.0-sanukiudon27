@@ -2,10 +2,16 @@
 include('./dbconnect.php');
 include('./function.php');
 
-$stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m') AS month, time from sum");
-$stmt->execute();
-$month = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+// $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
+// $stmt->execute();
+// $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// // var_dump($day);
+// for ($i = 0; $i < count($day); $i++) {
+//   if ($day[$i]['day'] == date("Y-m-d")) {
+//   $sum += $day[$i]['time'];
+//   };
+// }
+// var_dump($sum)
 
 
 
@@ -43,17 +49,17 @@ $month = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="hour_cal">
           <div class="today three_container shadow">
             <p class="date">Today</p>
-            <p class="number">10</p>
+            <p class="number"><?= sum_day($pdo)?></p>
             <p class="hour">hour</p>
           </div>
           <div class="month three_container shadow">
             <p class="date">Month</p>
-            <p class="number"><?= sum_month($pdo) ?></p>
+            <p class="number"><?= sum_month($pdo)?></p>
             <p class="hour">hour</p>
           </div>
           <div class="total three_container shadow">
             <p class="date">Total</p>
-            <p class="number"><?= sum_time($pdo) ?></p>
+            <p class="number"><?= sum_time($pdo)?></p>
             <p class="hour">hour</p>
           </div>
         </div>
