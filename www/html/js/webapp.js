@@ -154,24 +154,8 @@ loading_button.addEventListener('click', function () {
 })
 
 
-
-
-
-
-
-
-
-
-
 // カレンダー
 flatpickr('#js-datepicker');
-
-
-
-
-
-
-
 
 // $("#order_jq").before("<div class='learn_hour'>",
 // "<p class='title'>学習時間</p>",

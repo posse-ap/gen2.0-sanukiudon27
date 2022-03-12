@@ -1,5 +1,11 @@
 <?php
 include('./dbconnect.php');
+include('./function.php');
+
+$stmt = $pdo->prepare("SELECT time from sum");
+$stmt->execute();
+$time = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// 
 
 
 
@@ -25,7 +31,7 @@ include('./dbconnect.php');
     <div id="body_default_id" class="body_default_class">
         <header class="header">
             <div class="header_left">
-                <img src="../img/posseLogo.png" class="logo" alt="">
+                <img src="./img/posseLogo.png" class="logo" alt="">
                 <p class="header_4th_week">4th week</p>
             </div>
             <div class="button_container resposive_none_button">
@@ -37,7 +43,7 @@ include('./dbconnect.php');
                 <div class="hour_cal">
                     <div class="today three_container shadow">
                         <p class="date">Today</p>
-                        <p class="number">3</p>
+                        <p class="number"><?= sum_time($pdo)?></p>
                         <p class="hour">hour</p>
                     </div>
                     <div class="month three_container shadow">
