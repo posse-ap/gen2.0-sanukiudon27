@@ -11,6 +11,8 @@ function sum_time($pdo)
   return array_sum(array_column($time, 'time'));
 }
 
+// https://oreno-it3.info/archives/891
+// https://techacademy.jp/magazine/22757
 function sum_month($pdo)
 {
   $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m') AS month, time from sum");
