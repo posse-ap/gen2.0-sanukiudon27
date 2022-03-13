@@ -1,7 +1,7 @@
 <?php
 
 
-// include('./dbconnect.php');
+require 'dbconnect.php';
 
 
 function sum_time($pdo)
@@ -59,8 +59,8 @@ function sum_day($pdo)
 // for ($i=1; $i <= date('t') ; $i++) { 
 //   var_dump(date("Y-m-$i"));
 // }
-function chart_line ($pdo) {
 $sum =[];
+// function chart_line ($pdo) {
 for ($i = 1 ; $i <= date('t'); $i++) { 
   $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
   // echo $padding[$i];
@@ -71,18 +71,17 @@ for ($i = 1 ; $i <= date('t'); $i++) {
   // var_dump($day);
   array_push($sum, $day[0]['time']);
   // echo $i;
-}
+// }
 
 // var_dump($sum); 
 // var_dump($day);
-for ($i=0; $i < 20; $i++) { 
-  echo $sum[$i];
+// for ($i=0; $i < 20; $i++) { 
+//   echo $sum[$i];
+// }
 }
 
-}
 
-
-
+// var_dump($sum);\
 
 
 
