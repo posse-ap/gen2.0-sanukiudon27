@@ -1,6 +1,9 @@
 <?php
 
 
+// include('./dbconnect.php');
+
+
 function sum_time($pdo)
 {
   $stmt = $pdo->prepare("SELECT time from sum");
