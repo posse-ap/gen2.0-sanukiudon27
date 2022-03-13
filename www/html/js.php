@@ -1,3 +1,7 @@
+
+
+<script>
+
 const buttonOpen = document.getElementById("modal_open");
 const buttonOpenResponsive = document.getElementById("modal_open_responsive");
 const modal = document.getElementById("easy_modal");
@@ -175,8 +179,11 @@ var myBarChart = new Chart(ctx, {
                 data: [
                     // for文で30日分回すイメージ
                     // そのために３月１日を描画させる
-                    
-                    3, 4, 4, 3, 0, 0, 4, 2, 2, 8, 8, 2, 2, 1, 7, 4, 4, 3, 3, 3, 2, 2, 6, 2, 2, 1, 1, 1, 7, 8
+                    <?php
+                    echo chart_line($pdo);
+
+                    ?>
+                    // 3, 4, 4, 3, 0, 0, 4, 2, 2, 8, 8, 2, 2, 1, 7, 4, 4, 3, 3, 3, 2, 2, 6, 2, 2, 1, 1, 1, 7, 8
                 ],
                 backgroundColor: "#76cff3"
             }
@@ -441,3 +448,6 @@ var myDoughnutChart = new Chart(ctx, {
 //         //open-bodyが表示中の場合
 //         console.log('橙')
 //     }
+
+</script>
+

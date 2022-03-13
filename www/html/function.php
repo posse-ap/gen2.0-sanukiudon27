@@ -41,29 +41,84 @@ function sum_day($pdo)
   return $sum;
 }
 
+// $current_date=date('Y-m');
+// // $date_format=
+// $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m') = ?");
+// $stmt->bindValue(1,$current_date);
+// $stmt->execute();
+// $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
-$stmt->execute();
-$day = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// print_r('<pre>');
+// var_dump($day);
+// print_r('</pre>');
+
+// $day[0]['day'] == date('Y-m-d');
+// for ($i=1; $i <= date('t') ; $i++) { 
+//   var_dump(date("Y-m-$i"));
+// }
+function chart_line ($pdo) {
+$sum =[];
+for ($i = 1 ; $i <= date('t'); $i++) { 
+  $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
+  // echo $padding[$i];
+  $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m-%d') = '2022-03-$padding[$i]';");
+  // $stmt->bindValue(1, $padding[$i]);
+  $stmt->execute();
+  $day = $stmt->fetchAll();
+  // var_dump($day);
+  array_push($sum, $day[0]['time']);
+  // echo $i;
+}
+
+// var_dump($sum); 
+// var_dump($day);
+for ($i=0; $i < 20; $i++) { 
+  echo $sum[$i];
+}
+
+}
+
+
+
+
+
+
 
 
 // var_dump(date("Y-m-d"));であればstring(10) "2022-03-03"のように表示されるが、for文で回すので日付が3だけと一桁になってしまうので、二けたにする関数
 // for ($d=1; $d <= date('t') ; $d++) { 
 //   # code...
 // }
-$array = [];
+// $array = [];
+// $month_day = []; 
 
-for ($i = 1; $i <= date('t'); $i++) {
-  $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
-  // var_dump(date("Y-m-$padding[$i]"));
-  for ($u=0; $u < count($day) ; $u++) { 
-    if(date("Y-m-$padding[$i]") === $day[$u]['day']){
-    $day[$u]['time'];
-    array_push($array,$day[$u]['time']);
-  }
-}
-}
-var_dump($array);
+// for ($i = 1; $i <= date('t'); $i++) {
+//   $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
+//   array_push($month_day, date("Y-m-$padding[$i]"));
+//   for ($u=0; $u < count($day) ; $u++) { 
+//     if($month_day[$i-1] == $day[$u]['day']){
+//       var_dump($day[$u]['time']);
+//       // print_r('yes');
+//     }
+//   }
+// }
+// print_r('<pre>');
+// // var_dump($month_day);
+// // var_dump($day);
+// print_r('</pre>');
+
+// var_dump($day[0]['day']);
+
+      // var_dump(date('t'));
+//     $day[$u]['time'];
+//     array_push($array, $day[$u]['time']);
+//   }else{
+// array_push($array,'0');
+
+//   }
+  
+// }
+// }
 
 // var_dump($day[1]['day']);
 // for ($i=1; $i <= date('t'); $i++) { 

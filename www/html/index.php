@@ -2,6 +2,8 @@
 include('./dbconnect.php');
 include('./function.php');
 
+
+
 // $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
 // $stmt->execute();
 // $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -274,7 +276,10 @@ include('./function.php');
   <!-- プラグインを読みこんでパーセント表示できるようになった -->
   <!-- <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> -->
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
-  <script src="./js/webapp.js"></script>
+  <!-- <script src="./js/webapp.js"></script> -->
+  <?php
+include('./js.php');
+  ?>
 </body>
 
 
