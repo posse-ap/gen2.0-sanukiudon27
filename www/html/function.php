@@ -59,9 +59,9 @@ function sum_day($pdo)
 // for ($i=1; $i <= date('t') ; $i++) { 
 //   var_dump(date("Y-m-$i"));
 // }
-$sum =[];
+$sum = [];
 // function chart_line ($pdo) {
-for ($i = 1 ; $i <= date('t'); $i++) { 
+for ($i = 1; $i <= date('t'); $i++) {
   $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
   // echo $padding[$i];
   $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m-%d') = '2022-03-$padding[$i]';");
@@ -71,13 +71,13 @@ for ($i = 1 ; $i <= date('t'); $i++) {
   // var_dump($day);
   array_push($sum, $day[0]['time']);
   // echo $i;
-// }
+  // }
 
-// var_dump($sum); 
-// var_dump($day);
-// for ($i=0; $i < 20; $i++) { 
-//   echo $sum[$i];
-// }
+  // var_dump($sum); 
+  // var_dump($day);
+  // for ($i=0; $i < 20; $i++) { 
+  //   echo $sum[$i];
+  // }
 }
 
 
@@ -111,14 +111,14 @@ for ($i = 1 ; $i <= date('t'); $i++) {
 
 // var_dump($day[0]['day']);
 
-      // var_dump(date('t'));
+// var_dump(date('t'));
 //     $day[$u]['time'];
 //     array_push($array, $day[$u]['time']);
 //   }else{
 // array_push($array,'0');
 
 //   }
-  
+
 // }
 // }
 
@@ -134,11 +134,11 @@ for ($i = 1 ; $i <= date('t'); $i++) {
 //       // var_dump((INT)$day[$u]['day']);
 //     }
 //   }
-  
-  // var_dump($day[$u]['day']);
-  // var_dump($day);
-  // var_dump(count($day));
-  // var_dump(date("Y-m-$i"));
+
+// var_dump($day[$u]['day']);
+// var_dump($day);
+// var_dump(count($day));
+// var_dump(date("Y-m-$i"));
 // }
 // for($i=1; $i<=date('t'); $i++) {
 //   $stmtZero[$i] = date('Y-m-d', strtotime($day[$i]['day']));
@@ -151,3 +151,47 @@ for ($i = 1 ; $i <= date('t'); $i++) {
 // var_dump($day[0]['day']);
 
 // var_dump(date("Y-m-1") == $day[0]['day']);
+
+
+
+
+
+$each_lang = [];
+// 学習言語のグラフ
+$stmt_lang = $pdo->prepare("SELECT lang_id, time From sum");
+$stmt_lang->execute();
+$lang = $stmt_lang->fetchAll();
+$stmt_lang_max = $pdo->prepare("SELECT max(lang_id) From sum");
+$stmt_lang_max->execute();
+$lang_max = $stmt_lang_max->fetchAll();
+// print_r('<pre>');
+// var_dump($lang_max);
+// print_r('</pre>');
+for ($i = 0; $i < count($lang); $i++) {
+  // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
+  for ($u = 1; $u <= $lang_max[0]["max(lang_id)"]; $u++) {
+    if ($lang[$i]['lang_id'] == $u) {
+      $each_lang[$u] += $lang[$i]['time'];
+    }
+  }
+}
+
+$each_contents = [];
+// 学習コンテンツのグラフ
+$stmt_contents = $pdo->prepare("SELECT contents_id, time From sum");
+$stmt_contents->execute();
+$contents = $stmt_contents->fetchAll();
+$stmt_contents_max = $pdo->prepare("SELECT max(contents_id) From sum");
+$stmt_contents_max->execute();
+$contents_max = $stmt_contents_max->fetchAll();
+// print_r('<pre>');
+// var_dump($contents);
+// print_r('</pre>');
+for ($i = 0; $i < count($contents); $i++) {
+  // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
+  for ($u = 1; $u <= $contents_max[0]["max(contents_id)"]; $u++) {
+    if ($contents[$i]['contents_id'] == $u) {
+      $each_contents[$u] += $contents[$i]['time'];
+    }
+  }
+}
