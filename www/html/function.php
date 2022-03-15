@@ -4,10 +4,13 @@
 require 'dbconnect.php';
 
 
-function sum_time($pdo)
+function sum_time($dbh)
 {
-  $stmt = $pdo->prepare("SELECT time from sum");
+  // ➀SQL文の準備、実行（問い合わせる）
+  $stmt = $dbh->prepare("SELECT time from sum");
+  // ➁SQL文の実行
   $stmt->execute();
+  // ➁SQL文の結果取り出し
   $time = $stmt->fetchAll(PDO::FETCH_ASSOC);
   // 多次元連想配列の数値の合計値を出す
   // https://qiita.com/k941226/items/90c9b8ab2fc997c6e983
@@ -16,37 +19,58 @@ function sum_time($pdo)
 
 // https://oreno-it3.info/archives/891
 // https://techacademy.jp/magazine/22757
-function sum_month($pdo)
-{
-  $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m') AS month, time from sum");
+function sum_month($dbh){
+  // 全部のデータを持ってくるのではなくて（重い）、最低限の必要のデータを持ってくる　ランドセルと教科書 by shuto
+  $stmt = $dbh->prepare("select sum(time) as month from basic where DATE_FORMAT(date, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m')");
   $stmt->execute();
   $month = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  $sum = 0;
-  for ($i = 0; $i < count($month); $i++) {
-    if ($month[$i]['month'] == date("Y-m")) {
-      $sum += $month[$i]['time'];
-    };
-  }
-  return $sum;
+// echo '<pre>';
+//   var_dump($month);
+// echo '</pre>';
+return $month[0]['month'];
 }
 
-function sum_day($pdo)
+// 最初のやり方 月
+//   $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m') AS month, time from sum");
+//   $stmt->execute();
+//   $month = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//   $sum = 0;
+//   for ($i = 0; $i < count($month); $i++) {
+//     if ($month[$i]['month'] == date("Y-m")) {
+//       $sum += $month[$i]['time'];
+//     };
+//   }
+//   return $sum;
+// }
+function sum_day($dbh)
 {
-  $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
+  $stmt = $dbh->prepare("select sum(time) as day from basic where DATE_FORMAT(date, '%Y%m%d') = DATE_FORMAT(NOW(), '%Y%m%d')");
   $stmt->execute();
   $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  $sum = 0;
-  for ($i = 0; $i < count($day); $i++) {
-    if ($day[$i]['day'] == date("Y-m-d")) {
-      $sum += $day[$i]['time'];
-    };
-  }
-  return $sum;
+//   echo '<pre>';
+//   var_dump($day);
+// echo '</pre>';
+return $day[0]['day'];
 }
+
+// 元のやり方　日
+// function sum_day($dbh)
+// {
+//   $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
+//   $stmt->execute();
+//   $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//   $sum = 0;
+//   for ($i = 0; $i < count($day); $i++) {
+//     if ($day[$i]['day'] == date("Y-m-d")) {
+//       $sum += $day[$i]['time'];
+//     };
+//   }
+//   return $sum;
+// }
 
 // $current_date=date('Y-m');
 // // $date_format=
-// $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m') = ?");
+// $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m') = ?");
 // $stmt->bindValue(1,$current_date);
 // $stmt->execute();
 // $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -60,11 +84,11 @@ function sum_day($pdo)
 //   var_dump(date("Y-m-$i"));
 // }
 $sum = [];
-// function chart_line ($pdo) {
+// function chart_line ($dbh) {
 for ($i = 1; $i <= date('t'); $i++) {
   $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
   // echo $padding[$i];
-  $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m-%d') = '2022-03-$padding[$i]';");
+  $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m-%d') = '2022-03-$padding[$i]';");
   // $stmt->bindValue(1, $padding[$i]);
   $stmt->execute();
   $day = $stmt->fetchAll();
@@ -78,9 +102,11 @@ for ($i = 1; $i <= date('t'); $i++) {
   // for ($i=0; $i < 20; $i++) { 
   //   echo $sum[$i];
   // }
-}
+  
+  // nullではなく０時間
+// }var_dump($sum);
 
-
+  }
 // var_dump($sum);\
 
 
@@ -140,11 +166,11 @@ for ($i = 1; $i <= date('t'); $i++) {
 // var_dump(count($day));
 // var_dump(date("Y-m-$i"));
 // }
-// for($i=1; $i<=date('t'); $i++) {
-//   $stmtZero[$i] = date('Y-m-d', strtotime($day[$i]['day']));
-//   var_dump($stmtZero);
-// // var_dump(date("Y-m-$i"));
-// }
+for($i=1; $i<=date('t'); $i++) {
+  $stmtZero[$i] = date('Y-m-d', strtotime($day[$i]['day']));
+  // var_dump(date("Y-m-$i"));
+}
+
 // var_dump($day[0]['day']);
 
 // var_dump(date("Y-m-1"));
@@ -154,19 +180,19 @@ for ($i = 1; $i <= date('t'); $i++) {
 
 
 
+// データを扱うのはSQLで、刺身には刺身包丁を
+// 専門家に任せる、最適化の道を
+// もっといい道ありそうなのに、ごり押しする癖
 
-
+// 初めのやり方
 $each_lang = [];
 // 学習言語のグラフ
-$stmt_lang = $pdo->prepare("SELECT lang_id, time From sum");
+$stmt_lang = $dbh->prepare("select lang_id, sum(time) from basic group by lang_id");
 $stmt_lang->execute();
 $lang = $stmt_lang->fetchAll();
-$stmt_lang_max = $pdo->prepare("SELECT max(lang_id) From sum");
+$stmt_lang_max = $dbh->prepare("SELECT max(lang_id) From sum");
 $stmt_lang_max->execute();
 $lang_max = $stmt_lang_max->fetchAll();
-// print_r('<pre>');
-// var_dump($lang_max);
-// print_r('</pre>');
 for ($i = 0; $i < count($lang); $i++) {
   // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
   for ($u = 1; $u <= $lang_max[0]["max(lang_id)"]; $u++) {
@@ -176,22 +202,59 @@ for ($i = 0; $i < count($lang); $i++) {
   }
 }
 
-$each_contents = [];
+
+// 学習言語のグラフ
+// function lang_graph ($dbh, 'each') {
+// $stmt_lang = $dbh->prepare("select distinct sum(basic.time) as time ,basic.lang_id,langs.language,langs.color FROM basic inner join langs on basic.lang_id = langs.langs_table_id group by lang_id order by time desc;");
+// $stmt_lang->execute();
+// $langs = $stmt_lang->fetchAll();
+
+// foreach($langs as $lang){
+//   echo '<pre>';
+//   var_dump($lang);
+//   echo '</pre>';
+// return $lang['each']
+  
+// }
+// }
+$stmt_lang = $dbh->prepare("select distinct sum(basic.time) as time, langs.language, langs.color FROM basic inner join langs on basic.lang_id = langs.langs_table_id group by lang_id order by time desc;");
+$stmt_lang->execute();
+$langs = $stmt_lang->fetchAll();
+$stmt_lang_max = $dbh->prepare("SELECT max(lang_id) as max From basic");
+$stmt_lang_max->execute();
+$lang_max = $stmt_lang_max->fetchAll();
+
+
+// $each_contents = [];
+// // 学習コンテンツのグラフ旧版
+// $stmt_contents = $dbh->prepare("SELECT contents_id, time From sum");
+// $stmt_contents->execute();
+// $contents = $stmt_contents->fetchAll();
+// $stmt_contents_max = $dbh->prepare("SELECT max(contents_id) From sum");
+// $stmt_contents_max->execute();
+// $contents_max = $stmt_contents_max->fetchAll();
+// // print_r('<pre>');
+// // var_dump($contents);
+// // print_r('</pre>');
+// for ($i = 0; $i < count($contents); $i++) {
+//   // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
+//   for ($u = 1; $u <= $contents_max[0]["max(contents_id)"]; $u++) {
+//     if ($contents[$i]['contents_id'] == $u) {
+//       $each_contents[$u] += $contents[$i]['time'];
+//     }
+//   }
+// }
+
+
+// $each_contents = [];
 // 学習コンテンツのグラフ
-$stmt_contents = $pdo->prepare("SELECT contents_id, time From sum");
+$stmt_contents = $dbh->prepare("select sum(basic.time) as time, contents.learn_contents, contents.contents_color  FROM basic inner join contents on basic.contents_id = contents.contents_table_id group by contents_id order by time desc;");
 $stmt_contents->execute();
 $contents = $stmt_contents->fetchAll();
-$stmt_contents_max = $pdo->prepare("SELECT max(contents_id) From sum");
+$stmt_contents_max = $dbh->prepare("SELECT max(contents_id) From sum");
 $stmt_contents_max->execute();
 $contents_max = $stmt_contents_max->fetchAll();
 // print_r('<pre>');
 // var_dump($contents);
 // print_r('</pre>');
-for ($i = 0; $i < count($contents); $i++) {
-  // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
-  for ($u = 1; $u <= $contents_max[0]["max(contents_id)"]; $u++) {
-    if ($contents[$i]['contents_id'] == $u) {
-      $each_contents[$u] += $contents[$i]['time'];
-    }
-  }
-}
+

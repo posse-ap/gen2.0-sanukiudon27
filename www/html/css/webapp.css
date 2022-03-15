@@ -147,7 +147,7 @@ color: rgb(88, 88, 88);
   display: flex;
   align-items: center;
 }
-.legend_js{
+/* .legend_js{
 background-color: #0345ec;
 }
 .legend_css{
@@ -180,7 +180,7 @@ background-color: #0345ec;
 }
 .legend_posse{
   background-color: #20bdde;
-}
+} */
 /* 3containerについて */
 
 .three_container {

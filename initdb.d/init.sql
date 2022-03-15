@@ -58,18 +58,19 @@ DROP TABLE IF EXISTS langs;
 CREATE TABLE langs (
 langs_table_id INT AUTO_INCREMENT,
 language VARCHAR(255),
+color CHAR(7),
 PRIMARY KEY(langs_table_id)
 );
 
-INSERT INTO langs (language) VALUES
-('JavaScript'),
-('CSS'),
-('PHP'),
-('HTML'),
-('Laravel'),
-('SQL'),
-('SHELL'),
-('情報システム基礎知識（その他）');
+INSERT INTO langs (language, color) VALUES
+('JavaScript','#0345ec'),
+('CSS','#0f71bd'),
+('PHP','#20bdde'),
+('HTML','#4bd1fe'),
+('Laravel','#b29ef3'),
+('SQL','#6d46ec'),
+('SHELL','#4a17ef'),
+('情報システム基礎知識（その他）','#3105c0');
 
 -- +----+-----------------------------------------------+
 -- | id | language                                      |
@@ -89,13 +90,14 @@ DROP TABLE IF EXISTS contents;
 CREATE TABLE contents (
 contents_table_id INT AUTO_INCREMENT,
 learn_contents VARCHAR(255),
+contents_color CHAR(7),
 PRIMARY KEY(contents_table_id)
 );
 
-INSERT INTO contents (learn_contents) VALUES
-('ドットインストール'),
-('N予備校'),
-('POSSE課題');
+INSERT INTO contents (learn_contents, contents_color) VALUES
+('ドットインストール', '#0345ec'),
+('N予備校', '#0f71bd'),
+('POSSE課題', '#20bdde');
 
 -- +----+-----------------------------+
 -- | id | learn_contents              |
@@ -105,14 +107,14 @@ INSERT INTO contents (learn_contents) VALUES
 -- |  3 | POSSE課題                   |
 -- +----+-----------------------------+
 
-DROP TABLE IF EXISTS sum;
-CREATE TABLE sum (
-SELECT * FROM basic
-LEFT JOIN langs
-ON basic.lang_id = langs.langs_table_id
-LEFT JOIN contents 
-ON basic.contents_id = contents.contents_table_id
-);
+-- DROP TABLE IF EXISTS sum;
+-- CREATE TABLE sum (
+-- SELECT * FROM basic
+-- LEFT JOIN langs
+-- ON basic.lang_id = langs.langs_table_id
+-- LEFT JOIN contents 
+-- ON basic.contents_id = contents.contents_table_id
+-- );
 
 -- +----+------------+------+---------+-------------+----------------+-----------------------------------------------+-------------------+-----------------------------+
 -- | id | date       | time | lang_id | contents_id | langs_table_id | language                                      | contents_table_id | learn_contents              |

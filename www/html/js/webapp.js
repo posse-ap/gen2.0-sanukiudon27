@@ -127,9 +127,9 @@ function blue_change() {
 
 // 遷移できたやつ
 // loading_button.off('click');
-loading_button.addEventListener('click', function () {
+loading_button.addEventListener('click', function (e) {
     if (twitterCheck.checked) {
-        event.preventDefault();
+        e.preventDefault();
         var left = Math.round(window.screen.width / 2 - 275);
         var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
         window.open(

@@ -4,7 +4,7 @@ require 'function.php';
 
 
 
-// $stmt = $pdo->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
+// $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
 // $stmt->execute();
 // $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // // var_dump($day);
@@ -51,17 +51,19 @@ require 'function.php';
         <div class="hour_cal">
           <div class="today three_container shadow">
             <p class="date">Today</p>
-            <p class="number"><?= sum_day($pdo)?></p>
+            <p class="number"><?= sum_day($dbh) ?></p>
             <p class="hour">hour</p>
           </div>
           <div class="month three_container shadow">
             <p class="date">Month</p>
-            <p class="number"><?= sum_month($pdo)?></p>
+            <p class="number">
+              <?= sum_month($dbh) ?>
+            </p>
             <p class="hour">hour</p>
           </div>
           <div class="total three_container shadow">
             <p class="date">Total</p>
-            <p class="number"><?= sum_time($pdo)?></p>
+            <p class="number"><?= sum_time($dbh) ?></p>
             <p class="hour">hour</p>
           </div>
         </div>
@@ -81,7 +83,55 @@ require 'function.php';
           </div>
           <!-- </div> -->
           <div class="legend">
-            <div>
+            <?php
+            // var_dump($langs);
+            for ($i = 0; $i < 8; $i++) {
+            ?>
+              <div>
+                <span class='a' , style="backgroundColor:<?php
+                                                          echo $langs[$i]['color'];
+
+                                                          // foreach ($langs as $lang){
+                                                          //   echo $lang['color'];
+                                                          //   }
+                                                          ?>">
+
+                </span>
+                <p>
+                  <?php
+                  // foreach ($langs as $lang){
+                  // echo $lang['language'];
+                  // }
+                  $langs[$i]['language'];
+                  ?>
+                </p>
+              </div>
+            <?php } ?>
+            <!-- コツ
+          いきなり書いてもどこに問題があるのか原因を特定が難しい
+          →結果が出力されるようにした状態を一度作り、そこから徐々に移行
+          PHPを使わないHTMLでCSS（style=background）を試す
+          →　一つ表示させる　→　for文で完成
+          -->
+            <!-- <div>
+              <span class="a", style = background-color:#0345ec></span>
+              <p>JavaScript</p>
+            </div> -->
+            <?php
+            for ($i = 0; $i < $lang_max[0]['max']; $i++) :
+            ?>
+              <div>
+                <span class="a" , style=background-color:<?php
+                                                          echo $langs[$i]['color'];
+                                                          ?>></span>
+                <p>
+                  <?php
+                  echo $langs[$i]['language'];
+                  ?>
+                </p>
+              </div>
+            <?php endfor; ?>
+            <!-- <div>
               <span class="legend_js a"></span>
               <p>JavaScript</p>
             </div>
@@ -112,8 +162,7 @@ require 'function.php';
             <div>
               <span class="legend_other a"></span>
               <p>情報システム基礎知識（その他）</p>
-            </div>
-
+            </div> -->
           </div>
         </div>
         <div class="pie_chart_content shadow">
@@ -123,7 +172,21 @@ require 'function.php';
             <canvas id="myPieChartLang"></canvas>
           </div>
           <div class="legend_second">
+            <?php
+            for ($i=0; $i < 3; $i++) :
+            ?>
             <div>
+              <span class="a" , style=background-color:<?php 
+              echo $contents[$i]['contents_color'];?>>
+              </span>
+              <p>
+                <?php
+                echo $contents[$i]['learn_contents'];
+                ?>
+              </p>
+            </div>
+            <?php endfor; ?>
+            <!-- <div>
               <span class="legend_dot a"></span>
               <p>ドットインストール</p>
             </div>
@@ -134,7 +197,7 @@ require 'function.php';
             <div>
               <span class="legend_posse a"></span>
               <p>POSSE課題</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -278,7 +341,7 @@ require 'function.php';
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
   <!-- <script src="./js/webapp.js"></script> -->
   <?php
-require 'js.php';
+  require 'js.php';
   ?>
 </body>
 

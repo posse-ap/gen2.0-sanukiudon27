@@ -137,9 +137,9 @@
 
     // 遷移できたやつ
     // loading_button.off('click');
-    loading_button.addEventListener('click', function() {
+    loading_button.addEventListener('click', function(e) {
         if (twitterCheck.checked) {
-            event.preventDefault();
+            e.preventDefault();
             var left = Math.round(window.screen.width / 2 - 275);
             var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
             window.open(
@@ -333,23 +333,39 @@
     var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Javascript", "CSS", "PHP", "HTML", "Laravel", "SQL", "SHELL", "情報システム基礎知識（その他）"], //データ項目のラベル
+            labels: [
+                <?php
+                    foreach($langs as $lang){
+                    echo "'". $lang['language'] . "'". ',';
+                    }
+                    ?>
+                // "Javascript", "CSS", "PHP", "HTML", "Laravel", "SQL", "SHELL", "情報システム基礎知識（その他）"
+                ], //データ項目のラベル
             datasets: [{
                 backgroundColor: [
-                    "#0345ec",
-                    "#0f71bd",
-                    "#20bdde",
-                    "#4bd1fe",
-                    "#b29ef3",
-                    "#6d46ec",
-                    "#4a17ef",
-                    "#3105c0"
+                    <?php
+                    foreach($langs as $lang){
+                    echo "'". $lang['color'] . "'". ',';
+                    }
+                    ?>
+                    // "#0345ec",
+                    // "#0f71bd",
+                    // "#20bdde",
+                    // "#4bd1fe",
+                    // "#b29ef3",
+                    // "#6d46ec",
+                    // "#4a17ef",
+                    // "#3105c0"
                 ],
                 data: [
                     <?php
-                    for ($u = 1; $u <= $lang_max[0]["max(lang_id)"]; $u++) {
-                    echo $each_lang[$u] . ',' ;
+                    // for ($u = 1; $u <= $lang_max[0]["max(lang_id)"]; $u++) {
+                    // echo $each_lang[$u] . ',' ;
+                    // }
+                    foreach($langs as $lang){
+                    echo $lang['time'] . ',';
                     }
+
 
                     ?>
 
@@ -399,20 +415,36 @@
     var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["ドットインストール", "N予備校", "POSSE課題"], //データ項目のラベル
+            labels: [
+                <?php
+                foreach ($contents as $content) {
+                echo "'" . $content['learn_contents'] . "'" . ',';
+                }
+?>
+
+                // "ドットインストール", "N予備校", "POSSE課題"
+                ], 
             datasets: [{
                 backgroundColor: [
-                    "#0345ec",
-                    "#0f71bd",
-                    "#20bdde",
+                    <?php
+                foreach ($contents as $content) {
+                echo "'" . $content['contents_color'] . "'" . ',';
+                }
+?>
 
+                    // "#0345ec",
+                    // "#0f71bd",
+                    // "#20bdde",
                 ],
                 data: [
                     <?php
-                    for ($u = 1; $u <= $contents_max[0]["max(contents_id)"]; $u++) {
-                    echo $each_contents[$u] . ',' ;
-                    }
+foreach($contents as $content){
+    echo $content['time'] . ',';
+}
 
+                    // for ($u = 1; $u <= $contents_max[0]["max(contents_id)"]; $u++) {
+                    // echo $each_contents[$u] . ',' ;
+                    // }
                     ?>
                     // 42, 33, 25
                 ] //グラフのデータ
