@@ -2,22 +2,6 @@
 require 'dbconnect.php';
 require 'function.php';
 
-
-
-// $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum");
-// $stmt->execute();
-// $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// // var_dump($day);
-// for ($i = 0; $i < count($day); $i++) {
-//   if ($day[$i]['day'] == date("Y-m-d")) {
-//   $sum += $day[$i]['time'];
-//   };
-// }
-// var_dump($sum)
-
-
-
-
 ?>
 
 
@@ -89,13 +73,11 @@ require 'function.php';
             ?>
               <div>
                 <span class='a' , style="backgroundColor:<?php
-                                                          echo $langs[$i]['color'];
-
-                                                          // foreach ($langs as $lang){
-                                                          //   echo $lang['color'];
-                                                          //   }
-                                                          ?>">
-
+                  echo $langs[$i]['color'];
+                  // foreach ($langs as $lang){
+                  //   echo $lang['color'];
+                  //   }
+                  ?>">
                 </span>
                 <p>
                   <?php
@@ -122,14 +104,14 @@ require 'function.php';
             ?>
               <div>
                 <span class="a" , style=background-color:<?php
-                                                          echo $langs[$i]['color'];
-                                                          ?>></span>
+                echo $langs[$i]['color'];
+                ?>></span>
                 <p>
                   <?php
                   echo $langs[$i]['language'];
                   ?>
                 </p>
-              </div>
+              </div> 
             <?php endfor; ?>
             <!-- <div>
               <span class="legend_js a"></span>
@@ -220,16 +202,28 @@ require 'function.php';
     <header class="header_modal">
       <i class="fas fa-times little_gray" id="modal_close"></i>
     </header>
-    <div class="main_modal">
+    <form action="post.php" method="post">
       <div class="main_left_area">
         <div class="learn_date ">
           <p class="title">学習日</p>
-          <input type="text" id="js-datepicker" class="little_gray learn_date_input">
+          <input type="text" id="js-datepicker" name="date" class="little_gray learn_date_input">
         </div>
         <div class="learn_content_multiple">
-          <p class="title">学習コンテンツ（複数選択可)</p>
+          <p class="title">学習コンテンツ（複数選択可）</p>
           <div>
-            <div class="flex_i little_gray">
+          <div class="flex_i little_gray">
+              <input type="checkbox" name="N" id="N_check">
+              <label for="N">N予備校</label>
+            </div>
+          <div class="flex_i little_gray">
+              <input type="checkbox" name="dot" id="dot_check">
+              <label for="dot">ドットインストール</label>
+            </div>
+          <div class="flex_i little_gray">
+              <input type="checkbox" name="posse_task" id="posse_task_check">
+              <label for="posse_task">POSSE課題</label>
+            </div>
+            <!-- <div class="flex_i little_gray">
               <i class="fas fa-check"></i>
               <p>N予備校</p>
             </div>
@@ -240,18 +234,50 @@ require 'function.php';
             <div class="flex_i little_gray">
               <i class="fas fa-check"></i>
               <p>POSSE課題</p>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <div class="learn_lang_multiple">
           <p class="title">学習言語（複数選択可）</p>
           <div>
-            <div class="flex_i little_gray">
+            <!-- <div class="flex_i little_gray">
               <i class="fas fa-check"></i>
               <p>HTML</p>
+            </div> -->
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="html" id="html_check">
+              <label for="html">HTML</label>
             </div>
             <div class="flex_i little_gray">
+              <input type="checkbox" name="css" id="css_check">
+              <label for="css">CSS</label>
+            </div>
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="js" id="js_check">
+              <label for="js">JavaScript</label>
+            </div>
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="php" id="php_check">
+              <label for="php">PHP</label>
+            </div>
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="laravel" id="laravel_check">
+              <label for="laravel">Laravel</label>
+            </div>
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="sql" id="sql_check">
+              <label for="sql">SQL</label>
+            </div>
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="shell" id="shell_check">
+              <label for="shell">SHELL</label>
+            </div>
+            <div class="flex_i little_gray">
+              <input type="checkbox" name="info_system" id="info_system_check">
+              <label for="info_system">情報システム基礎知識（その他）</label>
+            </div>
+            <!-- <div class="flex_i little_gray">
               <i class="fas fa-check"></i>
               <p>CSS</p>
             </div>
@@ -278,7 +304,7 @@ require 'function.php';
             <div class="flex_i  little_gray">
               <i class="fas fa-check"></i>
               <p>情報システム基礎知識（その他）</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -286,7 +312,7 @@ require 'function.php';
         <div class="learn_hour">
           <div>
             <p class="title">学習時間</p>
-            <input type="text" class="little_gray learn_hour_input">
+            <input type="text" name ='time' class="little_gray learn_hour_input">
           </div>
           <div class="twitter_area" id="order_jq">
             <p class="title">Twitter用コメント</p>
@@ -308,13 +334,12 @@ require 'function.php';
           </div>
         </div>
       </div>
-    </div>
+    </form>
     <footer>
       <div class="button_container">
         <button class="button_modal" id="loading_button">記録・投稿</button>
       </div>
     </footer>
-
   </div>
   <div id="my-spinner" class="box_loading">
     <!-- type1 〜 type8 はお好みで -->

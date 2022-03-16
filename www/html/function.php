@@ -68,21 +68,7 @@ return $day[0]['day'];
 //   return $sum;
 // }
 
-// $current_date=date('Y-m');
-// // $date_format=
-// $stmt = $dbh->prepare("SELECT DATE_FORMAT(date, '%Y-%m-%d') AS day, time from sum WHERE DATE_FORMAT(date, '%Y-%m') = ?");
-// $stmt->bindValue(1,$current_date);
-// $stmt->execute();
-// $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// print_r('<pre>');
-// var_dump($day);
-// print_r('</pre>');
-
-// $day[0]['day'] == date('Y-m-d');
-// for ($i=1; $i <= date('t') ; $i++) { 
-//   var_dump(date("Y-m-$i"));
-// }
 $sum = [];
 // function chart_line ($dbh) {
 for ($i = 1; $i <= date('t'); $i++) {
@@ -94,23 +80,7 @@ for ($i = 1; $i <= date('t'); $i++) {
   $day = $stmt->fetchAll();
   // var_dump($day);
   array_push($sum, $day[0]['time']);
-  // echo $i;
-  // }
-
-  // var_dump($sum); 
-  // var_dump($day);
-  // for ($i=0; $i < 20; $i++) { 
-  //   echo $sum[$i];
-  // }
-  
-  // nullではなく０時間
-// }var_dump($sum);
-
-  }
-// var_dump($sum);\
-
-
-
+}
 
 
 // var_dump(date("Y-m-d"));であればstring(10) "2022-03-03"のように表示されるが、for文で回すので日付が3だけと一桁になってしまうので、二けたにする関数
@@ -185,22 +155,22 @@ for($i=1; $i<=date('t'); $i++) {
 // もっといい道ありそうなのに、ごり押しする癖
 
 // 初めのやり方
-$each_lang = [];
-// 学習言語のグラフ
-$stmt_lang = $dbh->prepare("select lang_id, sum(time) from basic group by lang_id");
-$stmt_lang->execute();
-$lang = $stmt_lang->fetchAll();
-$stmt_lang_max = $dbh->prepare("SELECT max(lang_id) From sum");
-$stmt_lang_max->execute();
-$lang_max = $stmt_lang_max->fetchAll();
-for ($i = 0; $i < count($lang); $i++) {
-  // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
-  for ($u = 1; $u <= $lang_max[0]["max(lang_id)"]; $u++) {
-    if ($lang[$i]['lang_id'] == $u) {
-      $each_lang[$u] += $lang[$i]['time'];
-    }
-  }
-}
+// $each_lang = [];
+// // 学習言語のグラフ
+// $stmt_lang = $dbh->prepare("select lang_id, sum(time) from basic group by lang_id");
+// $stmt_lang->execute();
+// $lang = $stmt_lang->fetchAll();
+// $stmt_lang_max = $dbh->prepare("SELECT max(lang_id) From sum");
+// $stmt_lang_max->execute();
+// $lang_max = $stmt_lang_max->fetchAll();
+// for ($i = 0; $i < count($lang); $i++) {
+//   // for ($u = 1; $u <= max($lang[$i]['lang_id']); $u++) {
+//   for ($u = 1; $u <= $lang_max[0]["max(lang_id)"]; $u++) {
+//     if ($lang[$i]['lang_id'] == $u) {
+//       $each_lang[$u] += $lang[$i]['time'];
+//     }
+//   }
+// }
 
 
 // 学習言語のグラフ

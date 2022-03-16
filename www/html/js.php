@@ -365,8 +365,6 @@
                     foreach($langs as $lang){
                     echo $lang['time'] . ',';
                     }
-
-
                     ?>
 
                     // 42, 18, 10, 9, 8, 5, 4, 4
