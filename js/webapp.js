@@ -15,9 +15,6 @@ buttonOpen.addEventListener('click', modalOpen);
 function modalOpen() {
     modal.style.display = 'block';
     black_change.classList.add("black_background");
-
-
-
 };
 // レスポンシブのボタン
 buttonOpenResponsive.addEventListener('click', modalOpen);
@@ -50,10 +47,9 @@ function modalClose() {
 
 
 // completeのバツ印が押されたとき
-completeClose.addEventListener('click', completeContainerClose)
-function completeContainerClose() {
+completeClose.addEventListener('click', completeContainerClose=>{
     completeOpen.style.display = 'none';
-}
+})
 
 
 // var notr = 0;
@@ -80,7 +76,6 @@ function completeContainerClose() {
 twitterCheck.addEventListener('click', blue_change)
 function blue_change() {
     twitterCheckFontAwesome.classList.toggle('blue')
-
 }
 
 // const cvs = document.getElementById('myBarChart');
@@ -155,22 +150,8 @@ loading_button.addEventListener('click', function () {
 
 
 
-
-
-
-
-
-
-
-
 // カレンダー
 flatpickr('#js-datepicker');
-
-
-
-
-
-
 
 
 // $("#order_jq").before("<div class='learn_hour'>",
@@ -187,8 +168,8 @@ var myBarChart = new Chart(ctx, {
         labels: [, 2, , 4, , 6, , 8, , 10, , 12, , 14, , 16, , 18, , 20, , 22, , 24, , 26, , 28, , 30,],
         datasets: [
             {
-                label: 'A店 来客数',
-                data: [3, 4, 4, 3, 0, 0, 4, 2, 2, 8, 8, 2, 2, 1, 7, 4, 4, 3, 3, 3, 2, 2, 6, 2, 2, 1, 1, 1, 7, 8],
+                label: '勉強時間',
+                data: [3, 4, 4, 3, 0, 0, 4, 2, 10, 7, 8, 2, 2, 1, 7, 4, 4, 3, 3, 3, 2, 2, 6, 2, 2, 1, 1, 1, 7, 8],
                 backgroundColor: "#76cff3"
             }
         ]
@@ -197,10 +178,6 @@ var myBarChart = new Chart(ctx, {
         legend: {
             display: false
         },
-        // title: {
-        //     display: true,
-        //     text: '支店別 来客数'
-        // },
         scales: {
             xAxes: [{
                 gridLines: {
@@ -216,7 +193,7 @@ var myBarChart = new Chart(ctx, {
                     display: false
                 },
                 ticks: {
-                    suggestedMax: 8,
+                    suggestedMax: 10,
                     suggestedMin: 0,
                     stepSize: 2,
                     callback: function (value, index, values) {
@@ -231,8 +208,8 @@ var myBarChart = new Chart(ctx, {
 
 // 円グラフ
 
-// var ctx = document.getElementById("myPieChart");
-// var myPieChart = new Chart(ctx, {
+// var ctx = document.getElementById("myPieChartLang");
+// var myPieChartLang = new Chart(ctx, {
 //   type: 'pie',
 //   data: {
 //     labels: ["Javascript","CSS","PHP","HTML","Lalavel","SQL","SHELL","情報システム基礎（その他）"],
@@ -255,7 +232,7 @@ var myBarChart = new Chart(ctx, {
 // });
 
 
-//   var ctx = document.getElementById("myPieChart");
+//   var ctx = document.getElementById("myPieChartLang");
 //   var myDoughnutChart= new Chart(ctx, {
 //     type: 'doughnut',
 //     data: {
@@ -287,32 +264,26 @@ var dataLabelPlugin = {
     afterDatasetsDraw: function (chart, easing) {
         // To only draw at the end of animation, check for easing === 1
         var ctx = chart.ctx;
-
         chart.data.datasets.forEach(function (dataset, i) {
             var dataSum = 0;
             dataset.data.forEach(function (element) {
                 dataSum += element;
             });
-
             var meta = chart.getDatasetMeta(i);
             if (!meta.hidden) {
                 meta.data.forEach(function (element, index) {
                     // Draw the text in black, with the specified font
                     ctx.fillStyle = 'rgb(255, 255, 255)';
-
                     var fontSize = 12;
                     var fontStyle = 'normal';
                     var fontFamily = 'Helvetica Neue';
                     ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
-
                     // Just naively convert to string for now
                     var labelString = chart.data.labels[index];
                     var dataString = (Math.round(dataset.data[index] / dataSum * 1000) / 10).toString() + "%";
-
                     // Make sure alignment settings are correct
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
-
                     var padding = 5;
                     var position = element.tooltipPosition();
                     // ctx.fillText(labelString, position.x, position.y - (fontSize / 2) - padding);
@@ -326,7 +297,7 @@ var dataLabelPlugin = {
 
 
 
-var ctx = document.getElementById("myPieChart");
+var ctx = document.getElementById("myPieChartLang");
 var myDoughnutChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -353,17 +324,16 @@ var myDoughnutChart = new Chart(ctx, {
     //         fontSize: 13
     //     },
     //     maintainAspectRatio: false
-
     // },
     options: {
-        legend: {             // 凡例の設定
-            position: "bottom",    // 表示位置
-            labels: {              // 凡例文字列の設定
-                fontSize: 14,
-                boxWidth: 12,
-            },
+        legend: {             // 凡例の設定 表示させないのでコメントアウト
+            // position: "bottom",    // 表示位置
+            // labels: {              // 凡例文字列の設定
+            //     fontSize: 10,
+            //     boxWidth: 12,
+            // },
             // 凡例非表示にする（widthを設定するため）
-            display: false 
+            display: false
         },
         layout: {
             padding: {
@@ -375,15 +345,20 @@ var myDoughnutChart = new Chart(ctx, {
         },
         // 小画面でも小さくなりすぎない
         maintainAspectRatio: false,
-
-        responsive: true
     },
     plugins: [dataLabelPlugin],
-
-
+    // plugins: {
+    //     labels: {
+    //     render: 'percentage',
+    //     fontColor: 'white',
+    //     fontSize: 20,
+    //     percision: 2
+    //     }
+    // },
+    
 });
 
-var ctx = document.getElementById("myPieChartLang");
+var ctx = document.getElementById("myPieChartContents");
 var myDoughnutChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -393,7 +368,6 @@ var myDoughnutChart = new Chart(ctx, {
                 "#0345ec",
                 "#0f71bd",
                 "#20bdde",
-
             ],
             data: [42, 33, 25] //グラフのデータ
         }]
@@ -452,6 +426,3 @@ var myDoughnutChart = new Chart(ctx, {
 //         //open-bodyが表示中の場合
 //         console.log('橙')
 //     }
-
-
-

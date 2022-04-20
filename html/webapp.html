@@ -49,14 +49,12 @@
                 </div>
             </div>
             <div class="main_right">
+                <!-- 学習言語のグラフ -->
                 <div class="pie_chart_lng shadow">
-                    <!-- <img src="../img/円グラフ　学習言語.png" alt=""> -->
-                    <!-- <div> -->
-                        <p class='pie_graph_title'>学習言語</p>
-                        <div class="pie_chart_canvas_container">
-                            <canvas id="myPieChart"></canvas>
-                        </div>
-                    <!-- </div> -->
+                    <p class='pie_graph_title'>学習言語</p>
+                    <div class="pie_chart_canvas_container">
+                        <canvas id="myPieChartLang"></canvas>
+                    </div>
                     <div class="legend">
                         <div>
                             <span class="legend_js a"></span>
@@ -90,14 +88,14 @@
                             <span class="legend_other a"></span>
                             <p>情報システム基礎知識（その他）</p>
                         </div>
-
                     </div>
                 </div>
+                <!-- 学習コンテンツのグラフ -->
                 <div class="pie_chart_content shadow">
                     <!-- <img src="../img/円グラフ　コンテンツ.png" alt=""> -->
                     <p class='pie_graph_title'>学習コンテンツ</p>
                     <div class="pie_chart_canvas_container">
-                        <canvas id="myPieChartLang"></canvas>
+                        <canvas id="myPieChartContents"></canvas>
                     </div>
                     <div class="legend_second">
                         <div>
@@ -130,6 +128,7 @@
         </footer>
         <div id="black_change"></div>
     </div>
+    <!-- modal画面 -->
     <div class="body_modal" id="easy_modal">
         <header class="header_modal">
             <i class="fas fa-times little_gray" id="modal_close"></i>
@@ -141,7 +140,7 @@
                     <input type="text" id="js-datepicker" class="little_gray learn_date_input">
                 </div>
                 <div class="learn_content_multiple">
-                    <p class="title">学習コンテンツ（複数選択可)</p>
+                    <p class="title">学習コンテンツ（複数選択可）</p>
                     <div>
                         <div class="flex_i little_gray">
                             <i class="fas fa-check"></i>
@@ -157,7 +156,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="learn_lang_multiple">
                     <p class="title">学習言語（複数選択可）</p>
                     <div>
@@ -205,20 +203,16 @@
                     <div class="twitter_area" id="order_jq">
                         <p class="title">Twitter用コメント</p>
                         <div>
-                            <textarea name="textarea" class="textarea  little_gray" 　 id="content" cols="30"
+                            <textarea name="textarea" class="textarea  little_gray" id="content" cols="30"
                                 rows="10"></textarea>
                         </div>
                         <div class="twitter_post">
-                            <!-- <label> <i class="fas fa-check fa-another-check" id="twitter_check"></i> -->
                             <label class="label">
                                 <span class="fas fa-check fa-another-check" id="twitter_check_i">
                                     <input type="checkbox" name="check" class='input_none' id="twitter_check">
                                 </span>
                                 <p>Twitterに自動投稿する</p>
                             </label>
-                            <!-- <button  class="btn" style="background-color:#00aced; color:white;"
-                                type="button"><i class="fab fa-twitter"></i> Tweet</button> -->
-
                         </div>
                     </div>
                 </div>
@@ -229,14 +223,13 @@
                 <button class="button_modal" id="loading_button">記録・投稿</button>
             </div>
         </footer>
-
     </div>
+    <!-- loading画面 -->
     <div id="my-spinner" class="box_loading">
         <!-- type1 〜 type8 はお好みで -->
         <div class="spinner type1">
             <span>Loading...</span>
         </div>
-
     </div>
     <div class="complete_container" id='complete_open'>
         <div class="complete_container_fa-times-div">
@@ -249,15 +242,12 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- プラグインを読みこんでパーセント表示できるようになった -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
     <script src="../js/webapp.js"></script>
 </body>
-
-
-
 
 </html>
